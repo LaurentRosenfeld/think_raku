@@ -15,7 +15,7 @@ or complementary examples.
 
 Just the sheer volume of code examples of this chapter is 
 likely to teach you a lot about programming in general and 
-about the Perl~6 language in particular.
+about the Raku language in particular.
 
 Finally, this chapter sometimes introduces (with examples) new 
 concepts that are covered only in later chapters of the book. 
@@ -651,7 +651,7 @@ at recurse2.pl6:12
 
 \index{multi!keyword}
 \index{multi!subroutine}
-Another possibility might be to use a feature of Perl~6 which 
+Another possibility might be to use a feature of Raku which 
 we haven't covered yet, \emph{multi} subroutines, described in 
 Section~\ref{multisubs} (p.~\pageref{multisubs}). The idea is 
 to declare two versions of the {\tt recurse} subroutine, 
@@ -684,11 +684,11 @@ first version of {\tt recurse} will be called.
 Otherwise, the second version that will run:
 
 \begin{verbatim}
-$ perl6 recurse.pl6
+$ raku recurse.pl6
 Args : n = 6.1, s = 0
 STOP! negative $n, we need to give up
 
-$ perl6 recurse.pl6
+$ raku recurse.pl6
 Args : n = -1, s = 0
 STOP! invalid $n, we need to give up
 \end{verbatim}
@@ -731,8 +731,8 @@ say compare 5, 5;   # 0
 
 Note: this exemplifies a three-way {\tt compare} function 
 commonly used for sorting in a number of programming 
-languages, including older versions of Perl (such as 
-Perl~5). In Perl~6, the operators implementing this 
+languages, including Perl~5, from which Raku is derived 
+in part). In Raku, the operators implementing this 
 functionality (the three-way comparators \verb'cmp', 
 \verb'leg' and \verb'<=>') return special types of 
 values: {\tt Order::More}, {\tt Order::Less}, and 
@@ -856,7 +856,7 @@ A(m-1, A(m, n-1)) & \mbox{if } m > 0 \mbox{ and } n > 0.
 \end{cases} 
 \end{eqnarray*}
 %
-Here's one way to compute the Ackermann function in Perl:
+Here's one way to compute the Ackermann function in Raku:
 
 \begin{verbatim}
 sub ack (Int $m, Int $n) {
@@ -870,7 +870,7 @@ say ack 3, 4;    # -> 125
 We have used parentheses to better show the structure, but 
 it works well without them. Even in the last code line with
 two calls to the subroutine, the subroutine signature with 
-two integer numbers is sufficient for the Perl compiler 
+two integer numbers is sufficient for the Raku compiler 
 to understand which arguments are associated with which call:
 \index{signature}
 
@@ -947,7 +947,7 @@ And the \verb'last_letter' subroutine could benefit from the same
 simplification.
 
 Note: the built-in {\tt flip} function or {\tt .flip} method 
-of Perl returns a reversed version of a string and would 
+of Raku returns a reversed version of a string and would 
 provide a much easier solution:
 
 \begin{verbatim}
@@ -1051,7 +1051,7 @@ the observation that the GCD of two numbers does not change
 if the larger number is replaced by its difference with 
 the smaller number.
 
-This might be implemented in Perl with the following recursive 
+This might be implemented in Raku with the following recursive 
 subroutine:
 
 \begin{verbatim}
@@ -1174,7 +1174,7 @@ There may be a last problem, though. Someone being not
 careful enough (or wanting to be too clever) might decide 
 to call directly {\tt gcd1}, thus annihilating the benefits 
 of the checks made by {\tt gcd}. To prevent that, we can make good 
-use of the fact that subroutines have lexical scope in Perl~6 
+use of the fact that subroutines have lexical scope in Raku 
 and can be made local to another subroutine: we can declare 
 and define {\tt gcd1} within the body of the {\tt gcd} 
 subroutine, so that {\tt gcd1} can be called only from 
@@ -1211,7 +1211,7 @@ Chapter~\ref{iteration} will come back to lexical scoping.
 \index{algorithm!Euclid's}
 
 You may be interested to know that there is a builtin {\tt gcd} 
-function in Perl~6.
+function in Raku.
 
 \section{Exercises of Chapter~\ref{iteration} (Iteration)}
  
@@ -1652,7 +1652,7 @@ really shines orders of magnitude brighter.
 \label{sol_regex_exercises}
 \index{regex}
 
-As is often the case in Perl, and even more so with 
+As is often the case in Raku, and even more so with 
 regexes, there is more than one way to do it (TIMTOWTDI). 
 Most of the exercises suggested here have more than one 
 solution (and sometimes many).
@@ -2111,15 +2111,15 @@ equivalents in the {\tt n..z} range.
 \index{operator!tr}
 \index{one-liner mode}
 
-We can code a ROT13 in a simple Perl one-liner (see Section~\ref{one-liner mode}):
+We can code a ROT13 in a simple Raku one-liner (see Section~\ref{one-liner mode}):
 \index{one-liner mode}
 \label{rot13_oneliner}
 
 \begin{verbatim}
-$ perl6 -e 'my $w = "foobar"; $w ~~ tr/a..mn..z/n..za..m/; say $w;'
+$ raku -e 'my $w = "foobar"; $w ~~ tr/a..mn..z/n..za..m/; say $w;'
 sbbone
 
-$ perl6 -e 'my $w = "sbbone"; $w ~~ tr/a..mn..z/n..za..m/; say $w;"
+$ raku -e 'my $w = "sbbone"; $w ~~ tr/a..mn..z/n..za..m/; say $w;"
 foobar
 \end{verbatim}
 
@@ -2198,7 +2198,7 @@ at the operating system command line prompt as a one-liner
 \index{one-liner mode}
 
 \begin{verbatim}
-$ perl6 -ne '.say if /(.) $0 (.) $1 (.) $2/' words.txt
+$ raku -ne '.say if /(.) $0 (.) $1 (.) $2/' words.txt
 bookkeeper
 bookkeepers
 bookkeeping
@@ -2380,7 +2380,7 @@ sub enqueue (Array @queue, $new_item) {
 \end{verbatim}
 
 But that does not work, because that would essentially tell 
-Perl that the \verb'@queue' parameter is an array of arrays. 
+Raku that the \verb'@queue' parameter is an array of arrays. 
 What we need here is the following signature syntax:
 \index{signature}
 
@@ -2669,7 +2669,7 @@ to understand these different paradigms, because they offer
 different ways of doing things, and they all have specific 
 advantages for specific types of problems. Knowing all of them 
 gives you more expressive power. One of the good things with 
-Perl~6 is that it gives you a modern and powerful tool to use 
+Raku is that it gives you a modern and powerful tool to use 
 each of these programming paradigms. 
 Chapter~\ref{functional programming} is all about functional 
 programming. Meanwhile, make sure to read 
@@ -3169,7 +3169,7 @@ for <ban bane post stop pots stop post pots pots taps> -> $w1, $w2 {
 
 This produces the following output:
 \begin{verbatim}
-$ perl6 anagrams.pl6
+$ raku anagrams.pl6
 ban bane:       False
 post stop:      True
 pots stop:      True
@@ -3245,7 +3245,7 @@ sub has-duplicates (@array) {
 %
 
 Another possibility is to use the {\tt unique} function 
-of Perl~6, which returns a sequence of unique values 
+of Raku, which returns a sequence of unique values 
 from the input list or array. Comparing the item count 
 of the output of {\tt unique} with the element count of 
 the original list will tell us whether some duplicates were 
@@ -3272,7 +3272,7 @@ sub has-duplicates (@array) {
 }
 \end{verbatim}
 
-Note that Perl also has a {\tt repeated} built-in 
+Note that Raku also has a {\tt repeated} built-in 
 function, which is the counterpart of {\tt unique} 
 and returns the duplicates of a list:
 \index{repeated method}
@@ -3343,16 +3343,16 @@ Running the program four times gave the following
 results:
 
 \begin{verbatim}
-$ perl6 birthdays.pl6
+$ raku birthdays.pl6
 On 1000 tests, 498 had at least one duplicate birthday
 
-$ perl6 birthdays.pl6
+$ raku birthdays.pl6
 On 1000 tests, 505 had at least one duplicate birthday
 
-$ perl6 birthdays.pl6
+$ raku birthdays.pl6
 On 1000 tests, 527 had at least one duplicate birthday
 
-$ perl6 birthdays.pl6
+$ raku birthdays.pl6
 On 1000 tests, 491 had at least one duplicate birthday
 \end{verbatim}
 
@@ -3361,7 +3361,7 @@ This simulation confirms that with a sample of 23 persons,
 there is an approximate 50\% probability that at least 
 two will have the same birthday.
 
-Note that Perl has a {\tt roll} built-in that returns 
+Note that Raku has a {\tt roll} built-in that returns 
 randomly selected elements from a list. This can make 
 the {\tt populate-birthdays} subroutine significantly 
 more concise:
@@ -3418,7 +3418,7 @@ faster than {\tt unshift}, even though the difference
 is not that large.
 
 The reason is presumably that since {\tt unshift} is 
-inserting items at the start of the array, Perl has 
+inserting items at the start of the array, Raku has 
 to move data around in order to reorganize the whole 
 array many times over, whereas, using {\tt push} 
 for inserting items at the end of the array implies 
@@ -3535,7 +3535,7 @@ case where a global variable does make some sense).
 We can actually do better than global 
 variables and still have the benefit of not passing 
 the whole array around again and again thanks to the 
-fact that, in Perl~6, subroutines are \emph{closures}, 
+fact that, in Raku, subroutines are \emph{closures}, 
 which means that they can use variables that exist in 
 the environment where they are created.
 \index{closure}
@@ -3712,7 +3712,7 @@ twice.
 
 A good way to reuse software while maintaining only 
 one copy of the reused subroutine is to insert it into 
-a Perl module, i.e., in a separate file that will be 
+a Raku module, i.e., in a separate file that will be 
 loaded into our programs needing to use it.
 
 The module file might be named \emph{BisectSearch.pm} 
@@ -3757,14 +3757,14 @@ change to the code of the subroutine is adding the
 \index{trait}
 
 \index{module!using a module}
-Now a Perl program will be able to load this module 
+Now a Raku program will be able to load this module 
 and to use the {\tt bisect} and {\tt some-other-sub} 
 subroutines. For example:
 \index{use lib}
 \index{module!use}
 \index{use module}
 \begin{verbatim}
-use lib ".";  # tells Perl to look for modules in the current dir
+use lib ".";  # tells Raku to look for modules in the current dir
 use BisectSearch;
 
 my @array = 'a'..'m';
@@ -3779,13 +3779,13 @@ for < a f w e q ab ce g > -> $search {
 \end{verbatim}
 %
 
-Perl has a list of places to look for modules, 
-which may vary from one Perl installation to another. 
-The first line {\tt use lib ".";} tells Perl to also 
+Raku has a list of places to look for modules, 
+which may vary from one Raku installation to another. 
+The first line {\tt use lib ".";} tells Raku to also 
 look for modules into the current directory. This is 
 just an example; you might prefer using a dedicated 
 directory for your modules. The 
-second line {\tt use BisectSearch;} tells Perl to 
+second line {\tt use BisectSearch;} tells Raku to 
 load the module and import the exported subroutines. Now, 
 the program can use the {\tt bisect} subroutine just as if 
 it had been defined within the program.
@@ -4125,7 +4125,7 @@ Rotating each word of a 113,000 list by each shift between
 1 and 13 is quite long. Running the program on the word list 
 will take some time, probably about 10 to 15~minutes.
 Using the \verb'.trans' built-in (see documentation in 
-\url{https://docs.perl6.org/routine/trans}) might speed up 
+\url{https://docs.raku.org/routine/trans}) might speed up 
 the process. Try it and judge for yourself.
 
 \subsection{Exercise~\ref{homophones}: Homophones (p.~\pageref{homophones})}
@@ -4325,7 +4325,7 @@ The ``!'' negation operator is a prefix operator (i.e., placed
 before the term that it negates). For the factorial operator, 
 we need a postfix operator (placed after the term upon which it 
 acts), so this difference will be sufficient to enable the 
-Perl compiler to distinguish between the two operators.
+Raku compiler to distinguish between the two operators.
 
 We use the reduction metaoperator to compute the result:
 
@@ -4408,7 +4408,7 @@ directory and with a \verb'.t' extension.
 Testing and the {\tt Test} module are further discussed  
 in Section~\ref{test_module} (p.~\pageref{test_module}).
 More information about testing can be found at: 
-\url{https://doc.perl6.org/language/testing}.
+\url{https://doc.raku.org/language/testing}.
 
 \subsection{Exercise in Section~\ref{sets_and_bags}: Sets, Bags and Mixes (p.~\pageref{diff_with_set})}
 \label{sol_diff_with_set}
@@ -4574,7 +4574,7 @@ an example of this:
 \index{one-liner mode}
 
 \begin{verbatim}
-$ perl6 -e 'say $_ for reverse @*ARGS' one two three
+$ raku -e 'say $_ for reverse @*ARGS' one two three
 three
 two
 one
@@ -4612,7 +4612,7 @@ signature, the program will die after having printed an
 automatically generated usage message:
 
 \begin{verbatim}
-$ perl6  markov.pl6 emma.txt 100 2 foo
+$ raku  markov.pl6 emma.txt 100 2 foo
 Usage:
   markov.pl6 <book> <word-count> [<order>] [<start-line>]
 \end{verbatim}
@@ -4680,7 +4680,7 @@ This program may be called on the \emph{emma.txt} file with
 the following syntax:
 
 \begin{verbatim}
-$ perl6  markov.pl6 emma.txt 100 2 253
+$ raku  markov.pl6 emma.txt 100 2 253
 \end{verbatim}
 
 \subsection{Exercises on the Huffman Code in Section~\ref{huffman_exercise} (p.~\pageref{huffman_exercise})}
@@ -5270,7 +5270,7 @@ sub is-leap ($y) { $y %% 400 or ($y %% 4 and not $y %% 100) }
 
 The code above is given as an example on how to compute 
 whether a year is leap, since it is an interesting and 
-classical problem, but Perl actually provides a method for that 
+classical problem, but Raku actually provides a method for that 
 in the {\tt Dateish} role. For example:
 \index{is-leap-year function}
 
