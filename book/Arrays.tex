@@ -3,7 +3,7 @@
 \chapter{Arrays and Lists}
 \label{arrays}
 
-This chapter presents some of Perl's most useful built-in types, 
+This chapter presents some of Raku's most useful built-in types, 
 arrays and lists.
 
 
@@ -74,7 +74,7 @@ We used lists earlier in this book. If we write:
 \end{verbatim}
 
 we are basically creating and using a list of integers (from 
-the standpoint of the type hierarchy of Perl; this observation is 
+the standpoint of the type hierarchy of Raku; this observation is 
 not entirely accurate technically for the second example, since 
 \verb'1..10' has a \emph{Range} type, and it gets 
 transformed into a \emph{Seq} type, but this approximation is 
@@ -99,7 +99,7 @@ ways to create an array is to assign a list to it:
 [0 1 2 3 4 5 6 7 8 9]
 \end{verbatim}
 
-Under the Perl REPL, an array is displayed between square 
+Under the Raku REPL, an array is displayed between square 
 brackets (\verb"[" and \verb"]"), while lists are displayed 
 between round parentheses.
 \index{REPL}
@@ -145,7 +145,7 @@ Here, the array is composed of an integer, a rational, a
 float ({\tt Num} type), a string, and a list of three integers. 
 It may not be advisable for the sake of the developer's 
 mental sanity to use an array with such wildly heterogeneous 
-items, but Perl will not complain about that: it is up 
+items, but Raku will not complain about that: it is up 
 to you to make sense of your data.
 
 The array above even contains a list of items. If you iterate 
@@ -383,7 +383,7 @@ We've just seen that assigning an item to an index that does
 not exists yet will expand the array. There are other 
 ways of expanding an array.
 
-Perl has operators to add elements to, or remove one element 
+Raku has operators to add elements to, or remove one element 
 from, an array:
 \index{pop function}
 \index{push function}
@@ -658,7 +658,7 @@ say @digits;             # -> [1 2 3 42 6 4 7 8 9]
 \end{verbatim}
 %
 
-Assuming the {\tt shift} function did not exist in Perl, 
+Assuming the {\tt shift} function did not exist in Raku, 
 you could write a {\tt my-shift} subroutine to simulate it:
 
 \begin{verbatim}
@@ -1119,7 +1119,7 @@ An operation like \verb"capitalize_all" is sometimes called a
 \index{filter pattern}
 \index{pattern!filter}
 
-Perl has a {\tt map} function that makes it possible to 
+Raku has a {\tt map} function that makes it possible to 
 do that in just one statement:
 
 \begin{verbatim}
@@ -1227,7 +1227,7 @@ a {\bf filter} because it selects some of the elements and
 filters out the others.
 \index{filter}
 
-Perl has a function called {\tt grep} to do that in just 
+Raku has a function called {\tt grep} to do that in just 
 one statement:
 \index{grep}
 
@@ -1332,7 +1332,7 @@ same program.
 
 Functional programming is so important in my opinion that a full chapter 
 of this book will be devoted to the functional programming 
-features of Perl (see Chapter~\ref{functional programming}). 
+features of Raku (see Chapter~\ref{functional programming}). 
 Before that, make sure to read the Subsection~\ref{functional_queue} 
 in the array and list section of the exercise solution chapter.
 
@@ -1343,17 +1343,17 @@ in the array and list section of the exercise solution chapter.
 
 By default, arrays can contain items of any type, including 
 items of different types, and can auto-extend as you need. 
-Perl will take care of the underlying gory details for you, 
+Raku will take care of the underlying gory details for you, 
 so that you don't have to worry about them. This is very 
 practical but also comes with a cost: some array 
-operations might be unexpectedly slow, because Perl may 
+operations might be unexpectedly slow, because Raku may 
 have to perform quite a bit of house-cleaning behind the 
 scene, such as memory allocation or reallocation, copying 
 a full array within memory, etc.
 
 In some cases, however, it is possible to know beforehand 
 the size of an array and the data type of its items. If 
-Perl knows about these, it might be able to work faster and 
+Raku knows about these, it might be able to work faster and 
 to use much less memory. It might also helps you 
 to prevent subtle bugs.
 
@@ -1372,7 +1372,7 @@ Type check failed in assignment to @numbers; expected Int but got Rat
 
 Similarly, you can declare the size of an array. Such arrays 
 are sometimes called \emph{shaped arrays}. There are 
-twelve months in a year, so you might tell Perl that your 
+twelve months in a year, so you might tell Raku that your 
 \verb'@months' array will never contain more that twelve 
 items:
 \index{shaped array}
@@ -1388,10 +1388,10 @@ Index 12 for dimension 1 out of range (must be 0..11)
 \end{verbatim}
 %
 
-Here, Perl has allocated 12 ``slots'' to the array, even though 
-the last five are currently undefined. Perl may not need 
+Here, Raku has allocated 12 ``slots'' to the array, even though 
+the last five are currently undefined. Raku may not need 
 to reallocate memory when you define the tenth item of 
-the array. And Perl tells you about your mistake if you 
+the array. And Raku tells you about your mistake if you 
 accidentally try to access an out-of-range item.
 \index{out-of-range error}
 
@@ -1462,7 +1462,7 @@ my @date[12, 31];
 \index{sorting!data}
 
 Sorting data is a very common operation in computer 
-science. Perl has a {\tt sort} function that can sort 
+science. Raku has a {\tt sort} function that can sort 
 an array or a list and return the sorted result:
 \index{sort}
 \index{sort!function or method}
@@ -1936,14 +1936,14 @@ and accumulates the elements into a single result.
 
 \item[Map] A processing pattern that traverses a 
 sequence and performs an operation on each element. 
-Also the name of a Perl built-in function that performs 
+Also the name of a Raku built-in function that performs 
 such a processing pattern.
 \index{map pattern}
 \index{pattern!map}
 
 \item[Filter] A processing pattern that traverses a 
 list and selects the elements that satisfy some criterion. 
-{\tt grep} is a Perl implementation of a filter.
+{\tt grep} is a Raku implementation of a filter.
 \index{filter pattern}
 \index{pattern!filter}
 
