@@ -996,7 +996,7 @@ processing'').
 \index{pattern!reduce}
 \index{traversal}
 
-Perl~6 has a {\tt reduce} function, which generates a single 
+Raku has a {\tt reduce} function, which generates a single 
 "combined" value from a list of values, by iteratively applying 
 to each item of a list a function that knows how to combine two values. 
 Using the {\tt reduce} function to compute the sum of the 
@@ -1037,7 +1037,7 @@ we haven't seen yet.
 
 \subsection{The Reduction Metaoperator}
 
-Perl~6 also has a reduction operator, 
+Raku also has a reduction operator, 
 or rather a reduction \emph{metaoperator}. An operator 
 usually works on variables or values; a metaoperator acts 
 on other operators. Given a list and an operator, the 
@@ -1311,7 +1311,7 @@ These ideas are to a large extent rooted in functional
 programming, a programming paradigm that is very different 
 from what we have seen so far and that has been implemented 
 historically in languages such as Lisp, Caml, Ocaml, Scheme, 
-Erlang, or Haskell. Perl~6 is not a functional 
+Erlang, or Haskell. Raku is not a functional 
 programming language in the same sense as these languages, 
 because it can also use other programming paradigms, 
 but it has incorporated most of their useful features, so 
@@ -1325,7 +1325,7 @@ This is immensely useful and can give you an incredible
 expressive power for solving certain types of problems. But 
 other types of problems might be better solved with the more 
 ``traditional'' procedural or imperative programming model, 
-while others may benefit from an object-oriented approach. Perl~6 
+while others may benefit from an object-oriented approach. Raku 
 lets you choose the programming model you want to use, and even 
 makes it possible to combine seamlessly several of them in the 
 same program.
@@ -1507,7 +1507,7 @@ integers above would return:
 The consequence is that, with many programming languages, 
 when you want to sort data, you need to specify which 
 type of sort you want. With consistent data (every item 
-of the same type), Perl~6 is usually clever enough to 
+of the same type), Raku is usually clever enough to 
 find out which type of sort is best suited to your 
 needs. So, for example, this code will perform 
 the type of sort that you probably expect:
@@ -1553,7 +1553,7 @@ The reason is that, when sorting strings, {\tt sort}
 uses the internal numeric encoding of letters. This 
 was sometimes called "ASCIIbetical" order (by contrast 
 with alphabetical order), but the term is now too limited 
-and somewhat obsolete, because Perl~6 is using Unicode 
+and somewhat obsolete, because Raku is using Unicode 
 rather than ASCII. 
 
 Clearly, these are cases where more advanced sorting 
