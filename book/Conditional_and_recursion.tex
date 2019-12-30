@@ -13,7 +13,7 @@ The {\bf integer division} operator, \verb"div", divides
 two numbers and rounds down to an integer.  For example, 
 suppose the
 run time of a movie is 105 minutes.  You might want to know how
-long that is in hours.  In Perl, conventional division
+long that is in hours.  In Raku, conventional division
 returns a rational number (in many languages, it returns a 
 floating-point number, which is another kind of internal 
 representation for noninteger numbers):
@@ -82,7 +82,7 @@ of that later in this chapter (see Section~\ref{alternative.execution}).
 \index{integer!even}
 \index{integer!odd}
 
-To tell the truth, Perl~6 also has a specific operator for 
+To tell the truth, Raku also has a specific operator for 
 divisibility, \verb"%%". The \verb'$dividend %% $divisor' 
 expression returns a true value if
 \verb'$dividend % $divisor' is equal to 0,  
@@ -170,7 +170,7 @@ and checks whether the operands are equal; the others are:
 \index{operator!<= (less than or equal)@\texttt{<=} (less than or equal)}
 \index{operator!=== (value identity)@\texttt{===} (value identity)}
 \fi
-Although these operations are probably familiar to you, the Perl
+Although these operations are probably familiar to you, the Raku
 symbols are different from the mathematical symbols.  A common error
 is to use a single equals sign ({\tt =}) instead of a double equals sign
 ({\tt ==}).  Remember that {\tt =} is an assignment operator and
@@ -250,7 +250,7 @@ True
 \end{verbatim}
 %  
 
-Unlike most other programming languages, Perl~6 allows you to chain relational operators transitively, just as in mathematical notation:
+Unlike most other programming languages, Raku allows you to chain relational operators transitively, just as in mathematical notation:
 
 \begin{verbatim}
 say 4 < 7 < 12;      # True
@@ -287,7 +287,7 @@ alphabetical) you want to use.
 There are also some so-called ``three-way'' relational operators, 
 {\tt cmp}, {\tt <=>} and {\tt leg}, but we'll come back to them 
 when we study how to sort the items of a list. Similarly, we need 
-to learn quite a few other things about Perl before we can do 
+to learn quite a few other things about Raku before we can do 
 justice to the incredibly powerful and expressive \emph{smart match} 
 operator, \verb"~~".
 \index{sorting}
@@ -361,7 +361,7 @@ that, in most common cases, the {\tt and}, {\tt or}, and
 \index{operator precedence}
 
 Strictly speaking, the operands of the logical operators should 
-be Boolean expressions, but Perl, just like many languages 
+be Boolean expressions, but Raku, just like many languages 
 partly derived from C, is not very strict on that. The 
 numbers~0 and 0.0 are false; and any nonzero number 
 or nonempty string is interpreted as {\tt True}:
@@ -388,7 +388,7 @@ is false and the expression could be true only if both arguments
 of the {\tt and} operator were true.
 
 When several Boolean conditions are linked with some logical 
-operator, Perl will only perform the comparisons that are 
+operator, Raku will only perform the comparisons that are 
 strictly necessary to figure out the final result, starting 
 with those on the left. For example, if you write:
 
@@ -399,7 +399,7 @@ False
 %
 there is no need to evaluate the second Boolean expression 
 to know that the overall expression will be false. In this case, 
-Perl does not try to check whether the number is positive or 
+Raku does not try to check whether the number is positive or 
 even whether it is defined. It is sometimes said that 
 these operators ``short circuit'' unnecessary conditions.
 \index{short-circuit boolean operators}
@@ -664,7 +664,7 @@ if 0 < $x and $x < 10 {
 }
 \end{verbatim}
 
-For this kind of condition, Perl~6 provides a more concise 
+For this kind of condition, Raku provides a more concise 
 option using the chained relational operators described earlier:
 
 \begin{verbatim}
@@ -807,7 +807,7 @@ is multiplied successively by each value of \verb"$_". The loop
 ends with 5 and the result, 120, is printed on the last line.
 
 This is a simple use of the {\tt for} statement, 
-but probably not the most commonly used in Perl~6; 
+but probably not the most commonly used in Raku; 
 we will see more below. We will also see other types of loops. 
 But that should be enough for now to let you write some loops. Loops 
 are found everywhere in computer programming.
@@ -1015,7 +1015,7 @@ In Section~\ref{stackdiagram}, we used a stack diagram to represent
 the state of a program during a subroutine call.  The same kind of
 diagram can help interpret a recursive subroutine.
 
-Every time a subroutine gets called, Perl creates a
+Every time a subroutine gets called, Raku creates a
 frame to contain the subroutine's local variables and parameters.
 For a recursive subroutine, there might be more than one frame 
 on the stack at the same time.
@@ -1078,7 +1078,7 @@ take the good habit of treating the base case first.
 \index{keyboard input}
 
 The programs we have written so far accept no input from 
-the user. They just do the same thing every time. Perl 
+the user. They just do the same thing every time. Raku 
 provides built-in functions that stop the program and
 wait for the user to type something. 
 
@@ -1152,10 +1152,10 @@ You may call this program twice with different command-line
 arguments as follows:
 
 \begin{verbatim}
-$ perl6 greet.pl6 Larry
+$ raku greet.pl6 Larry
 Hello Larry
 
-$ perl6 greet.pl6 world
+$ raku greet.pl6 world
 Hello world
 \end{verbatim}
 
@@ -1165,11 +1165,11 @@ and edit the end of the previous command line.
 
 If you forget to supply the argument (or provide the wrong 
 number of arguments, or arguments not matching the signature), 
-the program will die and Perl~6 will nicely generate and 
+the program will die and Raku will nicely generate and 
 display a usage method:
 
 \begin{verbatim}
-$ perl6 greet.pl6
+$ raku greet.pl6
 Usage:
   greet.pl6 <name>
 \end{verbatim}
@@ -1218,7 +1218,7 @@ multiplication-tables();
 It failed at compilation with the following error:
 
 \begin{verbatim}
-$ perl6 mult_table.pl6
+$ raku mult_table.pl6
 ===SORRY!=== Error while compiling /home/Laurent/mult_table.pl6
 Missing block (taken by some undeclared routine?)
 at /home/Laurent/mult_table.pl6:9
@@ -1229,7 +1229,7 @@ The error message reports an error on line~9 of the program
 (the last line of the code), at the end of the line, but 
 the actual error is a missing closing brace after line~4 
 and before line~5. The reason for this is that, while the 
-programmer made the mistake on line~4, the Perl interpreter 
+programmer made the mistake on line~4, the Raku interpreter 
 could not detect this error before it reached the 
 end of the program. The correct program for displaying 
 multiplication tables might be:
