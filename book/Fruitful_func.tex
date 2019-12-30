@@ -2,7 +2,7 @@
 \chapter{Fruitful Subroutines}
 \label{fruitchap}
 
-Most of the Perl functions we have used, such as the math
+Most of the Raku functions we have used, such as the math
 functions, produce return values.  But most of the subroutines 
 we've written so far are void: they have an effect, like 
 printing a value, but they don't have a return value.  In
@@ -127,7 +127,7 @@ means ``not defined'' and is clearly not the absolute value of 0:
 ()
 \end{verbatim}
 %
-By the way, Perl provides a built-in function called 
+By the way, Raku provides a built-in function called 
 {\tt abs} that computes absolute values.
 \index{abs function or method}
 \index{function!abs}
@@ -175,7 +175,7 @@ the distance is:
 \end{displaymath}
 %
 The first step is to consider what a {\tt distance} function should
-look like in Perl.  In other words, what are the inputs (parameters)
+look like in Raku.  In other words, what are the inputs (parameters)
 and what is the output (return value)?
 
 In this case, the inputs are two points, which you can represent
@@ -409,7 +409,7 @@ sub is-divisible(Int $x, Int $y) {
 }
 \end{verbatim}
 %
-If there is no return statement, a Perl subroutine returns the 
+If there is no return statement, a Raku subroutine returns the 
 value of expression on the last code line of the subroutine 
 (provided the last code line is an expression that gets evaluated), so that the 
 {\tt return} statement is not required here. In addition, 
@@ -456,7 +456,7 @@ We've seen in the section above several ways of writing a
 subroutine to check the divisibility of two integers.
 \index{divisibility}
 
-In fact, as briefly mentioned earlier, Perl~6 has a 
+In fact, as briefly mentioned earlier, Raku has a 
 ``is divisible'' operator, \verb'%%', which returns 
 {\tt True} if the number on the left is divisible by 
 the one on the right:
@@ -475,23 +475,25 @@ But don't worry, that's all right if you did not remember that.
 Speakers of natural languages are allowed to have different 
 skill levels, to learn as they go and to put the language 
 to good use before they know the whole language. The same 
-is true with Perl. You (and I) don't know all about Perl~6 
+is true with Raku. You (and I) don't know all about Raku 
 yet, just as we don't know all of English. But it is in fact 
-``Officially Okay in Perl Culture'' to use the subset of 
+``Officially Okay in the Perl and Raku Culture'' to use the subset of 
 the language that you know. You are in fact 
-encouraged to use what is sometimes called ``baby Perl'' 
+encouraged to use what is sometimes called ``baby Perl'' or ``baby Raku'' 
 to write programs, even if they are somewhat clumsy at the 
-beginning. That's the best way of learning Perl, just as using 
+beginning. That's the best way of learning Raku, just as using 
 ``baby talk'' is the right way for a child to learn English.
 \index{baby Perl}
 \index{Perl culture}
+\index{baby Raku}
+\index{Raku culture}
 
 The number of different ways of accomplishing a given task, 
 such as checking whether one number is divisible 
-by another, is an example of one of Perl's mottos: 
+by another, is an example of one of Perl's and Raku's mottos: 
 \emph{there is more than 
 one way to do it}, oft abbreviated TIMTOWTDI. Some ways may be 
-more concise or more efficient than others, but, in the Perl 
+more concise or more efficient than others, but, in the Perl and Raku 
 philosophy, you are perfectly entitled to do it your way, 
 especially if you're a beginner, provided you find the correct 
 result.
@@ -502,7 +504,7 @@ result.
 \index{Turing, Alan}
 \index{Turing!thesis}
 
-We have only covered a small subset of Perl~6 so far, but you 
+We have only covered a small subset of Raku so far, but you 
 might be interested to know that this subset is a {\em complete}
 programming language, which means that essentially anything 
 that can be computed can be expressed in this language.  
@@ -562,7 +564,7 @@ which is 6.
 \index{recursive definition}
 
 If you can write a recursive definition of something, you can
-write a Perl program to evaluate it. The first step is to decide
+write a Raku program to evaluate it. The first step is to decide
 what the parameters should be.  In this case it should be clear
 that {\tt factorial} takes a number\footnote{It should really be an 
 integer, but we'll get back to that later in this chapter.}:
@@ -657,7 +659,7 @@ In the last frame, the local
 variables {\tt recurse} and {\tt result} do not exist, because
 the branch that creates them does not run.
 
-A seasoned Perl programmer might write a more concise or
+A seasoned Raku programmer might write a more concise or
 more idiomatic subroutine\footnote{We will see later even 
 more idiomatic ways of computing the factorial of a number.}:
 \index{idiomatic}
@@ -738,7 +740,7 @@ sum of the two preceding ones.
 We briefly covered the Fibonacci sequence in Exercise~\ref{fibonacci} 
 of the previous chapter and implemented it with a {\tt for} loop.
 
-Let's now translate the recursive definition into Perl. It looks like this:
+Let's now translate the recursive definition into Raku. It looks like this:
 
 \begin{verbatim}
 sub fibonacci ($n) {
@@ -914,7 +916,7 @@ multi fibonacci(Int $n where $n > 1) {
 say fibonacci 10;  # -> 89
 \end{verbatim}
 
-Many built-in functions and most operators of Perl~6 are 
+Many built-in functions and most operators of Raku are 
 written as multi subroutines.
 
 \section{Debugging}
