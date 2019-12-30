@@ -3,7 +3,7 @@
 
 In the context of programming, a {\bf function} 
 is usually a named sequence of statements 
-that performs a computation.  In Perl, functions are often 
+that performs a computation.  In Raku, functions are often 
 also called {\bf subroutines} and the two terms can (for now) 
 be considered as more or less equivalent. When you define 
 a function, you specify the name and the sequence of statements.  
@@ -12,10 +12,10 @@ the function by name and this will run the sequence of statements
 contained in the function definition.
 \index{function}
 
-Perl comes with many built-in functions that are quite handy.  
+Raku comes with many built-in functions that are quite handy.  
 You've already seen some of them: for example, {\tt say} is a 
 built-in function, and we will see many more in the course of 
-this book. And if Perl doesn't already have a function that does 
+this book. And if Raku doesn't already have a function that does 
 what you want, you can build your own. This teaches you the basics 
 of functions and how to build new ones.
 
@@ -43,7 +43,7 @@ The answer to the ultimate question is 42
 
 Many programming languages require the arguments of a function to 
 be inserted between parentheses. This is not required (and 
-usually not recommended) in Perl~6 for most built-in functions 
+usually not recommended) in Raku for most built-in functions 
 (except when needed for precedence), but if you do use 
 parentheses, you should make sure to avoid inserting spaces 
 between the function name and the opening parenthesis. 
@@ -63,7 +63,7 @@ You may call it in any of the following ways:
 \end{verbatim}
 \index{parentheses!argument in}
 
-Experienced Perl programmers usually prefer to omit the parentheses 
+Experienced Raku programmers usually prefer to omit the parentheses 
 when they can. Doing so makes it possible to chain several functions 
 with a visually cleaner syntax. Consider for example the differences 
 between these two calls:
@@ -89,7 +89,7 @@ also called the {\bf return value}.
 \index{argument}
 \index{return!value}
 
-Perl provides functions that convert values from one type 
+Raku provides functions that convert values from one type 
 to another.  When called with only one argument, the 
 {\tt round} function takes any value and converts it to an 
 integer, if it can, or complains otherwise:
@@ -108,7 +108,7 @@ digits or '.' in '<HERE>yes' (indicated by <HERE>)
 \end{verbatim}
 
 %
-Note that, in Perl~6, many built-in functions can also 
+Note that, in Raku, many built-in functions can also 
 use a \emph{method invocation} syntax with the so-called 
 dot notation. The following statements display the same result:
 \index{invocation!method}
@@ -175,9 +175,9 @@ Finally, {\tt Str} converts its argument to a string:
 \index{coercion}
 \index{type!coercion}
 Note that these type conversion functions often don't need 
-to be called explicitly, as Perl will in many cases try to do the 
+to be called explicitly, as Raku will in many cases try to do the 
 right thing for you. For example, if you have a string 
-that looks like an integer number, Perl will \emph{coerce} 
+that looks like an integer number, Raku will \emph{coerce} 
 the string to an integer for you if you try to apply 
 an arithmetic operation on it:
 
@@ -226,8 +226,8 @@ object-oriented programming (in Chapter~\ref{objects}).
 \index{method invocation}
 
 For the time being, we can consider that the difference is 
-essentially a matter of a different calling syntax when using Perl's 
-built-ins. Most of Perl built-ins accept both a function 
+essentially a matter of a different calling syntax when using Raku's 
+built-ins. Most of Raku built-ins accept both a function 
 call syntax and a method invocation syntax. For example, 
 the following statements are equivalent:
 
@@ -260,7 +260,7 @@ both of them.
 \index{math function}
 \index{function!math}
 
-Perl provides most of the familiar mathematical functions.
+Raku provides most of the familiar mathematical functions.
 
 For some less common functions, you might need to use a 
 specialized module such as \verb'Math::Matrix' or 
@@ -293,7 +293,7 @@ For most common mathematical functions, however, you don't need any \verb'math' 
 This first example uses \verb"log10" (common logarithm) 
 to compute a signal-to-noise ratio in decibels 
 (assuming that \verb"signal-power" and
-\verb"noise-power" are defined in the proper units).  Perl 
+\verb"noise-power" are defined in the proper units).  Raku 
 also provides a {\tt log} function which, when receiving 
 one argument, computes logarithm base {\tt e} of the argument, 
 and, when receiving two arguments, computes the logarithm 
@@ -316,7 +316,7 @@ of the first argument to the base of the second argument:
 \index{function!log}
 
 
-Perl also provides most common trigonometric functions:
+Raku also provides most common trigonometric functions:
 
 \begin{verbatim}
 > my $radians = 0.7;
@@ -421,8 +421,8 @@ Cannot modify an immutable Int
 \section{Adding New Functions (a.k.a. Subroutines)}
 
 \index{subroutine}
-So far, we have only been using the functions that come with Perl,
-but it is also possible to add new functions. In Perl, user-defined
+So far, we have only been using the functions that come with Raku,
+but it is also possible to add new functions. In Raku, user-defined
 functions are often called subroutines, but you might choose 
 either word for them. 
 
@@ -644,7 +644,7 @@ have to run the statements in another function.  Then, while
 running that new function, the program might have to run yet
 another function!
 
-Fortunately, Perl is good at keeping track of where it is, so each
+Fortunately, Raku is good at keeping track of where it is, so each
 time a function completes, the program picks up where it left off in
 the code that called it.  When it gets to the end of the program,
 it terminates.
@@ -851,10 +851,10 @@ In some programming languages, such as Pascal or Ada, there
 is a strong distinction between a \emph{function} (which 
 returns a value) and a \emph{procedure} (which doesn't); 
 they are even defined with different keywords. This 
-distinction does not apply to Perl and to most modern 
+distinction does not apply to Raku and to most modern 
 programming languages.
 
-In fact, from a pure syntactic standpoint, Perl functions 
+In fact, from a pure syntactic standpoint, Raku functions 
 always return a result. So the distinction between 
 ``fruitful'' and ``void'' functions does not really exist 
 syntactically, but only semantically, i.e., from the 
@@ -877,7 +877,7 @@ my $golden = (sqrt(5) + 1) / 2;
 \end{verbatim}
 %
 When you call a function in interactive mode (under the 
-REPL), Perl usually displays the result:
+REPL), Raku usually displays the result:
 
 \begin{verbatim}
 > sqrt 5;
@@ -898,7 +898,7 @@ say $five;
 It produces the following warning:
 
 \begin{verbatim}
-WARNINGS for /home/Laurent/perl6_tests/sqrt.pl6:
+WARNINGS for /home/Laurent/raku_tests/sqrt.pl6:
 Useless use of "sqrt $five" in expression "sqrt $five" in sink context (line 2)
 5
 \end{verbatim}
@@ -1033,7 +1033,7 @@ you don't. It is up to you to decide whether you want
 strict typing or not, depending on the specific situation and
 needs. It is probably helpful to use parameter typing in many 
 cases, but it can also become a straitjacket in some situations. 
-Perl~6 lets you decide how strict you want to be about these things.
+Raku lets you decide how strict you want to be about these things.
 
 Our original {\tt half} subroutine has another limitation: it
 can work only on integers. But a function halving its argument 
@@ -1163,7 +1163,7 @@ to by the reference.
 Subroutines and other code objects can be passed around as values, 
 just like any variable, literal, or object. Functions are said 
 to be {\bf first-class objects} or sometimes first-class 
-citizens or higher-order functions. This means that a Perl 
+citizens or higher-order functions. This means that a Raku 
 function (its code, not the value returned by it) is a value 
 you can assign to a variable or pass around as an argument. 
 For example, \verb"do-twice" is a subroutine that takes a 
@@ -1194,7 +1194,7 @@ Hello World!
 \end{verbatim}
 
 The \verb"&" sigil placed before the subroutine name in the 
-argument list tells Perl that you are passing around a 
+argument list tells Raku that you are passing around a 
 subroutine or some other callable code object (and not 
 calling the subroutine at the moment).
 \index{sigil}
@@ -1421,8 +1421,8 @@ to Linux.'' ({\em The Linux Users' Guide} Beta Version 1).
 
 \item[Function] A named sequence of statements that performs 
 some useful operation. Functions may or may not take arguments 
-and may or may not produce a result. Perl comes with many 
-built-in functions, and you can also create your own. In Perl, 
+and may or may not produce a result. Raku comes with many 
+built-in functions, and you can also create your own. In Raku, 
 user-defined functions are often called subroutines.
 \index{function}
 
@@ -1516,7 +1516,7 @@ subroutine parameters are immutable.
 that is defined at compile time.
 \index{trait}
 
-\item[First class object] Perl's subroutines are said to be
+\item[First class object] Raku's subroutines are said to be
 higher order objects or first-class objects, because they can 
 be passed around as other subroutines' arguments or return values, 
 just as any other objects.
@@ -1552,7 +1552,7 @@ of the string is in column 70 of the display.
 \end{verbatim}
 
 Hint: use string concatenation and repetition.  Also,
-Perl provides a built-in function called {\tt chars} that
+Raku provides a built-in function called {\tt chars} that
 returns the length of a string, so the value of 
 \verb"chars 'Larry Wall'" or \verb"'Larry Wall'.chars" is 10.
 Solution: \ref{sol_right_justify}.
