@@ -92,7 +92,7 @@ parentheses, in this case the number ``42'').
 \index{grammatical analysis}
 This is what might be called low-level matching: pattern 
 recognition is done mostly at the individual character level.
-Perl~6 offers ways to group and name regex patterns so that 
+Raku offers ways to group and name regex patterns so that 
 these individual patterns can then be used as building 
 blocks for higher level matching: recognizing words and 
 sequences of words (rather than just characters), for the 
@@ -100,13 +100,13 @@ purpose of performing what is called lexical analysis
 (or {\bf lexing}) and grammatical analysis (or {\bf parsing}) 
 on a piece of text. 
 
-\index{Perl 6 grammar}
+\index{Raku 6 grammar}
 This chapter is mostly devoted to this higher type 
 of matching, leading to the creation of full-fledged grammars 
 that can analyze structured text such as XML or HTML texts, 
-JSON or YAML documents, or even computer programs: Perl~6 
-programs are actually parsed using a Perl~6 grammar written 
-in Perl~6.
+JSON or YAML documents, or even computer programs: Raku 
+programs are actually parsed using a Raku grammar written 
+in Raku.
 
 \index{grammar}
 Grammars are a very important topic in computer science, 
@@ -118,7 +118,7 @@ might be, or perhaps should be, a much more common task.
 Quite often, people spend a lot of effort at deciphering a 
 simple configuration file with low-level techniques, whereas 
 writing a simple parser might be a lot easier and much more 
-efficient. Perl~6 offers all the tools to do that 
+efficient. Raku offers all the tools to do that 
 very easily.
 \index{configuration file}
 
@@ -132,7 +132,7 @@ language (DSL), i.e., a usually relatively small sublanguage
 (a.k.a. \emph{slang}) adapted to a specific field of 
 knowledge (scientific, engineering, business, art, or other) 
 with its own conventions, symbols, operators, and so on. 
-With a grammar and Perl's ability to create its own operators, 
+With a grammar and Raku's ability to create its own operators, 
 you can often express specialized knowledge within the 
 terminology framework of subject-matter experts.
 
@@ -487,8 +487,8 @@ Grammars are a powerful tool used to analyze textual data
 and often to return data structures that have been 
 created by interpreting that text.
 
-For example, any Perl~6 program is parsed and executed 
-using a Perl~6 grammar written in Perl~6, and you could write a grammar 
+For example, any Raku program is parsed and executed 
+using a Raku grammar written in Raku, and you could write a grammar 
 for parsing (almost) any other programming language. 
 To tell the truth, programmers rarely 
 write grammars for parsing programming languages. But 
@@ -510,7 +510,7 @@ need an actual parser which, in turn, will usually be
 based on an underlying grammar.
 
 If you didn't like grammar in school, don't let that 
-scare you off grammars. Perl~6 grammars are nothing complicated; 
+scare you off grammars. Raku grammars are nothing complicated; 
 they just allow you to group named rules, just as classes 
 allow you to group methods of regular code.
 
@@ -675,7 +675,7 @@ grammar FormalMessage is Message {
 }
 \end{verbatim}
 
-The {\tt is Message} trait in the header tells Perl that 
+The {\tt is Message} trait in the header tells Raku that 
 {\tt FormalMessage} should inherit from the {\tt Message} grammar. 
 Only two rules, {\tt greet} and {\tt end}, need to be 
 redefined; the others (the {\tt TOP} rule 
@@ -801,7 +801,7 @@ will contain the arithmetic operator).
 \index{actions!class}
 The {\tt parse} 
 method is called with an {\tt actions:} named argument, 
-the {\tt ArithmActions} class, which tells Perl which 
+the {\tt ArithmActions} class, which tells Raku which 
 actions object to use with the grammar. In this example, we 
 don't really pass an action object, but simply the name 
 of the actions class (actually a type object), 
@@ -846,7 +846,7 @@ The JSON format is quite simple and is composed of two types
 of structural entities:
 \begin{itemize}
 \item Objects or unordered lists of name-value pairs 
-(basically corresponding to hashes in Perl);
+(basically corresponding to hashes in Raku);
 \item Arrays, or ordered lists of values.
 \end{itemize}
 
@@ -1126,7 +1126,7 @@ because it has been built only for pedagogical purposes
 and may not comply with every single fine detail of the JSON 
 standards.
 
-Take a look at the grammar of the Perl~6 {\tt JSON::Tiny} 
+Take a look at the grammar of the Raku {\tt JSON::Tiny} 
 module (\url{https://github.com/moritz/json}), which can 
 parse any valid JSON document. It is not much more 
 complicated than what we have shown here (except for the use 
@@ -1293,12 +1293,12 @@ Phone numbers:
 \index{grammar!inheritance}
 The capacity for a grammar to inherit from another one opens 
 the door to very rich possibilities in terms of 
-extending the Perl~6 language itself. It is possible, for 
+extending the Raku language itself. It is possible, for 
 example in the context of a module or a framework, to ``subclass'' 
-the standard Perl grammar, i.e., to write a new child grammar that 
-inherits from the standard Perl grammar, but adds a new 
+the standard Raku grammar, i.e., to write a new child grammar that 
+inherits from the standard Raku grammar, but adds a new 
 feature, overloads an operator, or modifies some other syntax 
-element, and to run this program with the same Perl~6 compiler,
+element, and to run this program with the same Raku compiler,
 but with this locally modified grammar.
 
 This means that it is actually possible to dynamically extend 
@@ -1433,8 +1433,8 @@ to the actions methods.
 
 \index{debugger}
 \index{debugger!stepping through a regex}
-Remember also that the Perl debugger (see 
-Section~\ref{perl-debugger}) can be very helpful. We 
+Remember also that the Raku debugger (see 
+Section~\ref{raku-debugger}) can be very helpful. We 
 briefly showed in Subsection~\ref{regex-debugging} 
 (p.~\pageref{regex-debugging}) how to go step by step 
 through a regex match. Most of what has been described 
@@ -1470,7 +1470,7 @@ prompt for a list of available commands.
 
 \index{grammar}
 \item[Grammar] A high level tool for performing lexical and 
-grammatical analysis of structured text. In Perl~6, 
+grammatical analysis of structured text. In Raku, 
 a grammar is more specifically a namespace containing a 
 collection of named rules aimed at this type of analysis.
 
@@ -1491,7 +1491,7 @@ new knowledge from these definitions and rules. Regexes and
 grammars are examples of declarative programming.
 
 \index{match object}
-\item[Match object] in Perl~6, an object (of type {\tt Match}), 
+\item[Match object] in Raku, an object (of type {\tt Match}), 
 usually noted \verb'$/', which contains (sometimes very) 
 detailed information about what was successfully matched 
 by a regex or a grammar. The \verb'$/' match object will be 
@@ -1514,7 +1514,7 @@ tokens).
 \item[Abstract syntax tree (AST):] a data structure often 
 summarizing the match object and used for further exploitation 
 of the useful data. The match object is populated automatically 
-by Perl, whereas the AST contains information deemed useful and 
+by Raku, whereas the AST contains information deemed useful and 
 explicitly inserted by the programmer.
 
 \index{actions!class}
