@@ -27,7 +27,7 @@ is technically an ordered sequence of characters.
 
 Many programming languages allow you to access individual 
 characters of a string with an index between brackets. This 
-is not directly possible in Perl, but you still can access 
+is not directly possible in Raku, but you still can access 
 the characters one at a time using the {\tt comb} built-in 
 method and the bracket operator:
 
@@ -79,7 +79,7 @@ Again, the ``nana'' substring starts on the third letter of
 \verb"'banana'", but this letter is indexed 2, and the sixth letter is index 5. 
 
 But, even if all this might be useful at times, this is 
-not the way you would usually handle strings in Perl, 
+not the way you would usually handle strings in Raku, 
 which has higher level tools that are more powerful and more 
 expressive, so that you seldom need to use indexes or 
 subscripts to access individual characters.
@@ -93,7 +93,7 @@ we'll have to come back to that later.
 \section{Common String Operators}
 \index{string!operators}
 
-Perl provides a number of operators and functions to 
+Raku provides a number of operators and functions to 
 handle strings. Let's review some of the most popular ones.
 
 \subsection{String Length}
@@ -340,7 +340,7 @@ The other adverbs that can be used in this context are
 {\tt :k} (keys), {\tt :kv} (keys and values), and {\tt :p} 
 (pairs). Their detailed meaning can be 
 found in the documentation for {\tt split} 
-(\url{https://docs.perl6.org/routine/split}). The 
+(\url{https://docs.raku.org/routine/split}). The 
 {\tt skip-empty} adverb removes empty chunks from the result 
 list.
 
@@ -676,7 +676,7 @@ intentions clearer.
 
 Most of the rest of this chapter will cover the basics of constructing 
 such regex patterns and using them. But the concept of 
-regexes is so crucial in Perl that we will also devote a full 
+regexes is so crucial in Raku that we will also devote a full 
 chapter to this subject and some related matters (Chapter~\ref{regex_grammars}).
 
 The notion of regular expressions is originally a concept 
@@ -685,11 +685,11 @@ uses of regular expressions in computing came from
 Unix utilities, some of which still remain in wide use today, such as 
 {\tt grep}, created by Ken Thomson in 1973, {\tt sed} (ca. 1974), and 
 {\tt awk}, developed a few years later (in 1977) by Aho, Weinberger, and Kernighan. 
-Earlier versions of the Perl language in the 1980s included an 
+Early versions of Perl, the language from which Raku is derived, included an 
 extended version of regular expressions, that has since 
 been imitated by many other recent languages. The difference, 
 though, is that regular expressions are deeply rooted within the 
-core of the Perl language, whereas most other languages have 
+core of the Perl and Raku languages, whereas most other languages have 
 adopted them as an add-on or a plug-in, often based or derived 
 on a library known as Perl Compatible Regular Expressions (PCRE).
 \index{awk}
@@ -702,7 +702,7 @@ on a library known as Perl Compatible Regular Expressions (PCRE).
 \index{PCRE (Perl Compatible Regular Expressions)}
 \index{Perl Compatible Regular Expressions (PCRE)}
 
-The Perl regular expressions have extended these notions 
+The Raku regular expressions have extended these notions 
 so much that they have little to do with the original 
 language theory concept, so that 
 it has been deemed appropriate to stop calling them 
@@ -917,7 +917,7 @@ Its negation is written with an uppercase letter, \verb'\W'.
 The \verb'\w' (``word character'') character class  
 matches one single alphanumeric character (i.e., among alphabetical 
 characters, digits, and the \verb'_' character). \verb'\W' will match 
-any other character. Note however that Perl is Unicode-compliant 
+any other character. Note however that Raku is Unicode-compliant 
 and that, for example, letters of the Greek or Cyrillic alphabets or 
 Thai digits will be matched by \verb'\w':
 
@@ -1140,7 +1140,7 @@ say "foobar" ~~ /<!after foo> bar/;  # -> Nil (regex failed)
 %
 I assume that the examples above are rather clear. Look into the 
 documentation 
-(\url{https://docs.perl6.org/language/regexes#Look-around_assertions}) 
+(\url{https://docs.raku.org/language/regexes#Look-around_assertions}) 
 if you need further details. 
 
 \subsubsection{Code Assertions}
@@ -1462,7 +1462,7 @@ my $string = "Christmas : 2016-12-25.";
 %
 
 \index{TIMTOWTDI}
-As mentioned earlier, one of the mottos in Perl is ``There 
+As mentioned earlier, one of the mottos in Raku is ``There 
 is more than one way to do it'' (TIMTOWTDI). The various 
 examples below should illustrate that principle quite well 
 by showing several different ways to retrieve the date in 
@@ -1710,7 +1710,7 @@ of personal information from data, etc.
 \subsection{The {\tt subst} Method}
 \index{subst method}
 
-Perl has a {\tt subst} method which can replace some text with 
+Raku has a {\tt subst} method which can replace some text with 
 some other text:
 
 \begin{verbatim}
@@ -1731,7 +1731,7 @@ $string = $string.subst(/c \w+ f/, "SUBST");  # -> abSUBSTg
 \index{substitution operator}
 
 The most common way to perform text substitution 
-in Perl is the \verb's/search/replace/' construct, which 
+in Raku is the \verb's/search/replace/' construct, which 
 is quite concise, plays well within the general regex syntax, 
 and has the advantage of enabling in-place substitution.
 
@@ -1987,7 +1987,7 @@ values where each value is identified by an integer index.
 \index{item}
 
 \item[Index] An integer value used to select an item in
-a sequence, such as a character in a string.  In Perl
+a sequence, such as a character in a string.  In Raku
 indices start from 0.
 \index{index}
 
@@ -2022,7 +2022,7 @@ syntax to describe from left to right the content that
 is intended to be matched within a target string.
 
 \index{regex}
-\item[Regexes] A pattern-matching sublanguage of Perl~6 
+\item[Regexes] A pattern-matching sublanguage of Raku 
 derived from regular expressions.
 
 \index{backtracking}
