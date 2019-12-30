@@ -47,11 +47,11 @@ assigns the (approximate) value of the golden ratio to {\tt \$phi}.
 
 There are two important syntax features to understand here.
 
-First, in Perl, variable names start with a so-called 
+First, in Raku, variable names start with a so-called 
 \emph{sigil}, i.e., a special non-alphanumeric character such 
 as \verb'$', \verb'@', \verb'%', \verb'&', and some others. 
 This special character 
-tells us and the Perl compiler (the program that reads 
+tells us and the Raku compiler (the program that reads 
 the code of our program and transforms it into computer 
 instructions) which kind of variable it is. For example, the 
 \$ character indicates that the variables above are all 
@@ -66,8 +66,8 @@ types of variables that may contain more than one value.
 Second, notice that all three variables above are first 
 introduced by the keyword {\tt my}, which is a way of 
 declaring a new variable. Whenever you create a new 
-variable in Perl, you need to \emph{declare} it, 
-i.e., tell Perl that you're going to use that new 
+variable in Raku, you need to \emph{declare} it, 
+i.e., tell Raku that you're going to use that new 
 variable; this is most commonly done with the 
 {\tt my} keyword, which declares a \emph{lexical} variable. 
 We will explain later what a lexical variable is; let's 
@@ -164,7 +164,7 @@ some special variables.
 
 \index{Unicode}
 \index{ASCII}
-Unlike most other programming languages, Perl~6 does not require 
+Unlike most other programming languages, Raku does not require 
 the letters and digits used in variable names to be plain ASCII. 
 You can use all kinds of Unicode letters, i.e., 
 letters from almost any language in the world, so that, for example,  
@@ -244,7 +244,7 @@ at <unknown file>:1
 
 If you've ever used another programming language and stumbled 
 across a terse message such as {\tt"SyntaxError: invalid syntax"}, 
-you will notice that the Perl designers have made quite a bit 
+you will notice that the Raku designers have made quite a bit 
 of effort to provide detailed, useful, and meaningful error 
 messages. 
 \index{error message}
@@ -253,10 +253,10 @@ Many programming languages have \emph{keywords} or \emph{reserved
 words} that are part of the syntax, such as {\tt if}, {\tt while}, 
 or {\tt for}, and thus cannot be used for identifying variables 
 because this would create ambiguity. There is no such problem 
-in Perl: since variable names start with a sigil, the compiler 
+in Raku: since variable names start with a sigil, the compiler 
 is always able to tell the difference between a keyword and a 
 variable. Names such as {\tt \$if} or {\tt \$while} are 
-syntactically valid variable identifiers in Perl (whether 
+syntactically valid variable identifiers in Raku (whether 
 such names make sense is a different matter).
 \index{sigil}
 \index{keyword}
@@ -362,7 +362,7 @@ be written:
 Here, \verb"$answer" is first declared with a value of 17. The next 
 statement assigns to \verb"$answer" the current value of 
 \verb"$answer" (i.e., 17) + 25. This is such a common operation 
-that Perl, like many other programming languages, has a 
+that Raku, like many other programming languages, has a 
 shortcut for this:
 
 \begin{verbatim}
@@ -417,7 +417,7 @@ argument by one and also exists in a prefix and a postfix form.
 
 \section{Script Mode}
 
-So far we have run Perl in {\bf interactive mode}, which
+So far we have run Raku in {\bf interactive mode}, which
 means that you interact directly with the interpreter (the 
 REPL). Interactive mode is a good way to get started,
 but if you are working with more than a few lines of code, 
@@ -426,8 +426,9 @@ it can be clumsy and even tedious.
 
 The alternative is to use a text editor and save code in a file 
 called a {\bf script} and then run the interpreter in {\bf script mode} 
-to execute the script.  By convention, Perl~6 scripts have names that 
-end with {\tt .pl}, {\tt .p6} or {\tt .pl6}.
+to execute the script.  By convention, Raku scripts have names that 
+end with {\tt .raku}, but you could in theory use anything else is you wished
+(although this is probably not recommended for the sake of clarity).
 \index{script}
 \index{script mode}
 
@@ -440,7 +441,7 @@ number of text editors available for free. On Linux, you might use
 or \emph{notepad++}. There are also many cross-platform editors  
 or integrated development environments (IDEs) providing a 
 text editor functionality, including \emph{padre}, \emph{eclipse}, 
-or \emph{atom}. Many of these provide various syntax highlighting 
+\emph{atom}, or \emph{Comma}, which is specifically designed for Raku. Many of these provide various syntax highlighting 
 capabilities, which might help you use correct syntax (and 
 find some syntax errors).
 \index{syntax!highlighting}
@@ -453,23 +454,24 @@ find some syntax errors).
 \index{text editor!nano}
 \index{text editor!notepad++}
 \index{text editor!atom}
+\index{text editor!comma}
 
 Once you've saved your code into a file (say, for example, 
-\verb'my_script.pl6'), you can run the program by issuing 
+\verb'my_script.raku'), you can run the program by issuing 
 the following command at the operating system prompt (for example 
 in a Linux console or in a \verb'cmd' window under Windows):
 \begin{verbatim}
-perl6 my_script.pl6
+raku my_script.raku
 \end{verbatim}
 
-Because Perl provides both modes,
+Because Raku provides both modes,
 you can test bits of code in interactive mode before you put them
 in a script.  But there are differences between interactive mode
 and script mode that can be confusing.
 \index{interactive mode}
 \index{script mode}
 
-For example, if you are using the Perl~6 interpreter as a 
+For example, if you are using the Raku interpreter as a 
 calculator, you might type:
 
 \begin{verbatim}
@@ -486,7 +488,7 @@ marathon is about 42~kilometers.
 
 But if you type the same code into a script and run it, you get no
 output at all.  In script mode, an expression, all by itself, has no
-visible effect.  Perl actually evaluates the expression, but it doesn't
+visible effect.  Raku actually evaluates the expression, but it doesn't
 display the value unless you tell it to:
 
 \begin{verbatim}
@@ -518,7 +520,7 @@ It produces the following output:
 The assignment statement produces no output.
 
 To check your understanding, type the following statements in the
-Perl interpreter and see what they do:
+Raku interpreter and see what they do:
 
 \begin{verbatim}
 5;
@@ -532,14 +534,14 @@ expression into a print statement and then run it again.
 
 \section{One-Liner Mode}
 
-Perl also has a \emph{one-liner mode}, which enables you 
+Raku also has a \emph{one-liner mode}, which enables you 
 to type directly a very short script at the operating 
 system prompt. Under Windows, it might look like this:
 \index{one-liner mode}
 \label{one-liner mode}
 
 \begin{verbatim}
-C:\Users\Laurent>perl6 -e "my $value = 42; say 'The answer is ', $value;"
+C:\Users\Laurent>raku -e "my $value = 42; say 'The answer is ', $value;"
 The answer is 42
 
 \end{verbatim}
@@ -556,7 +558,7 @@ and apostrophes with double quotation marks:
 \index{quote mark}
 
 \begin{verbatim}
-$  perl6 -e 'my $value = 42; say "The answer is $value";'
+$  raku -e 'my $value = 42; say "The answer is $value";'
 The answer is 42
 
 \end{verbatim}
@@ -585,7 +587,7 @@ consecutive double letters).
 
 When an expression contains more than one operator, the order of
 evaluation depends on the {\bf order of operations} or \emph{operator precedence}. 
-For mathematical operators, Perl follows mathematical convention.
+For mathematical operators, Raku follows mathematical convention.
 The acronym {\bf PEMDAS}\footnote{US students are sometimes taught 
 to use the "Please Excuse My Dear Aunt Sally" mnemonics to remember 
 the right order of the letters in the acronym.} is a useful 
@@ -619,7 +621,7 @@ from left to right (except exponentiation).  So in the expression
 {\tt \$degrees / 2 * pi}, the division happens first and the 
 result is multiplied by {\tt pi}, which is not the expected 
 result. (Note that {\tt pi} is not a variable, but a predefined 
-constant in Perl~6, and therefore does not require a sigil.)  To 
+constant in Raku, and therefore does not require a sigil.)  To 
 divide by $2 \pi$, you can use parentheses:
 \index{sigil}
 \index{pi}
@@ -653,7 +655,7 @@ my code may also not know.
 \index{type!coercion}
 
 In general, you can't perform mathematical operations on strings, unless
-the strings look so much like numbers that Perl can transform or \emph{coerce} them into numbers and still make sense, so the 
+the strings look so much like numbers that Raku can transform or \emph{coerce} them into numbers and still make sense, so the 
 following are illegal:
 
 \begin{verbatim}
@@ -787,7 +789,7 @@ to distinguish between them in order to track them down more quickly.
 they are not exactly the same thing (you may in theory have 
 syntax errors that are not compile-time errors and the other way 
 around), but they can be deemed to be the same for 
-practical purposes here. In Perl~6, compile-time errors 
+practical purposes here. In Raku, compile-time errors 
 have the ``===SORRY!==='' string at the beginning of 
 the error message.}
 
@@ -797,7 +799,7 @@ the error message.}
 \index{syntax!error}
 
 If there is a syntax error
-anywhere in your program, Perl displays an error message and quits 
+anywhere in your program, Raku displays an error message and quits 
 without even starting to run your program, and you will 
 obviously not be able to run the program.  During the first few
 weeks of your programming career, you might spend a lot of
@@ -853,7 +855,7 @@ values they refer to.
 \item[Keyword]  A reserved word that is used to parse a
 program; in many languages, you cannot use keywords like 
 {\tt if}, {\tt  for}, and {\tt while} as variable names. 
-This problem usually does not occur in Perl because variable
+This problem usually does not occur in Raku because variable
 names begin with a \emph{sigil}.
 \index{keyword}
 \index{sigil}
@@ -880,15 +882,15 @@ far, the statements we have seen are assignments and print statements. Statement
 \item[Execute]  To run a statement and do what it says.
 \index{execute}
 
-\item[interactive mode (or interpreter mode):] A way of using the Perl 
+\item[interactive mode (or interpreter mode):] A way of using the Raku 
 interpreter by typing code at the prompt.
 \index{interactive mode}
 
-\item[Script mode] A way of using the Perl interpreter to read
+\item[Script mode] A way of using the Raku interpreter to read
 code from a script and run it.
 \index{script mode}
 
-\item[one-liner mode:] A way of using the Perl interpreter to read
+\item[one-liner mode:] A way of using the Raku interpreter to read
 code passed at the operating system prompt and run it.
 \index{one-liner mode}
 
@@ -948,13 +950,13 @@ before you can run the above.)
 
 \item In some languages, statements don't have to end with a semi-colon, 
 {\tt ;}. What happens in script mode if you omit a semi-colon at the end
-of a Perl statement?
+of a Raku statement?
 \index{semi-colon}
 
 \item What if you put a period at the end of a statement?
 
 \item In math notation you can multiply $x$ and $y$ like this: $x y$.
-What happens if you try that in Perl?
+What happens if you try that in Raku?
 
 \end{itemize}
 
@@ -963,7 +965,7 @@ What happens if you try that in Perl?
 
 \begin{exercise}
 
-Practice using the Perl interpreter as a calculator: 
+Practice using the Raku interpreter as a calculator: 
 \index{calculator}
 
 \begin{enumerate}
