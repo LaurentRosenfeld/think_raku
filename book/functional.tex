@@ -1,4 +1,4 @@
-\chapter{Functional Programming in Perl}
+\chapter{Functional Programming in Raku}
 \label{functional programming}
 \index{functional programming}
 
@@ -16,7 +16,7 @@ it much easier to understand and predict the behavior of a
 program, which is one of the key motivations for the 
 development of functional programming.
 
-Perl is not a functional language in the sense that it  
+Raku is not a functional language in the sense that it  
 also uses several other programming paradigms that we have seen 
 abundantly throughout this book. It does however 
 offer extensive functional programming features and 
@@ -32,8 +32,8 @@ As early as Chapter~\ref{funcchap} on functions and
 subroutines, in Section~\ref{first_class} 
 (p.~\pageref{first_class}), we have seen that functions,  
 subroutines, and other code objects are \emph{first-class 
-objects} or \emph{first-class citizens} in Perl, which 
-means that they can be passed around as values. A Perl~6 
+objects} or \emph{first-class citizens} in Raku, which 
+means that they can be passed around as values. A Raku 
 function is a value you can assign to a variable or pass 
 around as an argument to another function or a return value from 
 another function.
@@ -70,7 +70,7 @@ is often called a \emph{callback function}.
 The \verb"&" sigil placed before the {\tt greet} 
 subroutine name in the argument list (as well as before 
 the {\tt code} parameter in the signature and in the 
-body of the {\tt do-twice} subroutine) tells Perl 
+body of the {\tt do-twice} subroutine) tells Raku 
 that you are passing around a subroutine or some 
 other callable code object.
 % TODO: get these entries working in plastex
@@ -368,7 +368,7 @@ print " ", $fifo-get() for 1..5; # ->  1 2 3 4 5
 \index{FIFO}
 \index{anonymous subroutine}
 
-In Perl~6, all subroutines are closures, which means that 
+In Raku, all subroutines are closures, which means that 
 all subroutines can access to lexical variable that 
 existed in the environment at the time of their definition, 
 but they don't necessarily act as closures.
@@ -421,7 +421,7 @@ longer in lexical scope when the block is executed.
 
 Quite often, a computation can be expressed as a 
 series of successive transformations on a list of 
-values. Perl provides functions able to work on 
+values. Raku provides functions able to work on 
 the items of a list and apply simple actions, 
 callback functions, or code blocks to these items. 
 We have already seen and used abundantly several 
@@ -496,7 +496,7 @@ In the previous examples, the pipeline steps were laid out in reverse
 order; you may consider this inconvenient, although it is 
 easy to get used to.
 
-Perl~6 provides the \verb'==>' \emph{feed} operator 
+Raku provides the \verb'==>' \emph{feed} operator 
 (sometimes called \emph{pipe} in other languages) 
 that makes it possible to write the various pipeline 
 steps in a ``more natural,'' left to right and top to bottom, order.
@@ -523,7 +523,7 @@ say @out.perl;   # ["2015,05,13,id1"]
 
 By the way, if you're using such pipeline operations on 
 a large input, and depending on your platform 
-architecture, Perl~6 may be able to run these 
+architecture, Raku may be able to run these 
 various operations in parallel on different CPUs or cores, 
 thereby improving significantly the performance 
 of the overall process.
@@ -629,7 +629,7 @@ the size of their operands:
 @a >>+<< @b;   # @a and @b must have the same size
 @a <<+<< @b;   # @a can be smaller
 @a >>+>> @b;   # @b can be smaller
-@a <<+>> @b;   # Either can be smaller, Perl will do 
+@a <<+>> @b;   # Either can be smaller, Raku will do 
                # probably what you mean (DWIM principle)
 \end{verbatim}
 
@@ -872,7 +872,7 @@ language''(DSL), i.e., a sublanguage specifically
 adapted for a specific context or subject matter (e.g., math 
 or chemistry), which allows a particular type of problem 
 or solution to be expressed more clearly than the 
-existing core language would allow. In Perl~6, the 
+existing core language would allow. In Raku, the 
 grammars and the ease of creating new operators make 
 this creation of DSL quite an easy task.
 \index{domain-specific language (DSL)}
@@ -1003,7 +1003,7 @@ say %first_half;
 
 So far, so good, nothing really new. But the new 
 infix $\oplus$ operator has now become almost the same 
-as a Perl built-in operator, so that we can use it 
+as a Raku built-in operator, so that we can use it 
 together with the reduction metaoperator:
 \index{reduction!metaoperator}
 
@@ -1020,11 +1020,11 @@ say %year;
 \end{verbatim}
 
 Everything works as if this new operator was part 
-of the Perl~6 grammar. And that's in effect what 
+of the Raku grammar. And that's in effect what 
 has happened here: we have extended the 
 language with a new operator. This possibility of 
 extending the language is key to the ability of  
-Perl~6 to cope with future needs that we can't even 
+Raku to cope with future needs that we can't even 
 think of at present time.
 \index{extending the language}
 \index{new operators!creating}
@@ -1038,7 +1038,7 @@ Section~\ref{map_filter} (p.~\pageref{map_filter})
 how higher-order functions such as the {\tt reduce}, 
 {\tt map}, {\tt grep}, and {\tt sort} functions 
 can be powerful and expressive. There are some 
-other such built-in functions in Perl, but we would 
+other such built-in functions in Raku, but we would 
 like to be able to create our own.
 
 \subsection{Custom Versions of map, grep, etc.}
@@ -1046,10 +1046,10 @@ like to be able to create our own.
 Let's see how we could write our own custom versions 
 of such functions.
 
-\subsubsection{my-map, a pure Perl version of map}
+\subsubsection{my-map, a pure Raku version of map}
 \index{my-map}
 
-Let's start by trying to rewrite in pure Perl the 
+Let's start by trying to rewrite in pure Raku the 
 {\tt map} function. It needs to take a subroutine 
 or a code block as its first argument, to apply it 
 to an array or a list, and to return the modified 
@@ -1067,7 +1067,7 @@ say @result;                   # -> [2 4 6 8 10]
 
 This works exactly as expected on the first trial. 
 (I have attempted the same experiment with some other 
-languages in the past , including Perl~5; it took quite 
+languages in the past, including Perl~5; it took quite 
 a few tries before getting it right, especially 
 regarding the calling syntax. Here, everything 
 falls into place naturally.) To tell the truth, 
@@ -1085,7 +1085,7 @@ same way as {\tt map}.
 \index{my-grep}
 \index{grep}
 
-Writing our pure-Perl version of {\tt grep} is just about as 
+Writing our pure-Raku version of {\tt grep} is just about as 
 easy:
 \begin{verbatim}
 sub my-grep (&code, @values) { 
@@ -1112,11 +1112,11 @@ function.
 \index{merge sort}
 \index{quick sort}
 
-The Perl {\tt sort} function implements a sort 
+The Raku {\tt sort} function implements a sort 
 algorithm known as \emph{merge sort}\footnote{Merge 
 sort is presented in some details in 
 section~\ref{mergesort}.}.  Some 
-previous versions of the Perl language (prior to 
+previous versions of the Raku language (prior to 
 version~5.8) implemented another algorithm known 
 as \emph{quick sort}\footnote{Quick sort is presented 
 in \ref{quicksort}}. The main reason for this 
@@ -1164,7 +1164,7 @@ practice because its theoretical analysis is very difficult
 performance, but no one has been able to prove this 
 formally so far). In fact, we don't really care about 
 the real performance of this sort algorithm; it is 
-very unlikely that a pure Perl implementation 
+very unlikely that a pure Raku implementation 
 of the comb sort will outperform the built in 
 {\tt sort} function implemented in C and probably very 
 carefully optimized by its authors. We only want to 
@@ -1263,7 +1263,7 @@ performance, but also because it makes it possible to consider
 \emph{infinite} lists: so long as you can guarantee that 
 you are only going to use a limited number of elements, 
 you don't have any problem considering lists that are 
-potentially unlimited. Perl~6 provides the concepts and 
+potentially unlimited. Raku provides the concepts and 
 tools to do this.
 \index{infinite list}
 
@@ -1303,7 +1303,7 @@ instead of doing it 200 times, 195 of which are for nothing.
 Of course, multiplying a number by 2 isn't an expensive 
 operation and the array isn't very large, but this shows 
 how laziness can prevent useless computations. We will come 
-back to this idea, since Perl~6 offers native support to lazy 
+back to this idea, since Raku offers native support to lazy 
 lists and lazy processing.
 \index{laziness}
 
@@ -1455,8 +1455,8 @@ the idea of laziness.
 \index{iterator}
 
 This is what would have been necessary to implement lazy 
-iterators in earlier versions of Perl (e.g., Perl~5), but 
-much of this is not required with Perl~6 which has built-in 
+iterators in languages from which Raku is derived (e.g., Perl~5), but 
+much of this is not required with Raku which has built-in 
 support for lazy lists and lazy operators, as we will see soon.
 
 \section{The gather and take Construct}
@@ -1558,7 +1558,7 @@ block); it can be within the \emph{dynamic scope} of the
 \index{dynamic scope}
 \index{lexical scope}
 Although we haven't covered this concept before, 
-Perl has the notion of \emph{dynamic scope}: contrary 
+Raku has the notion of \emph{dynamic scope}: contrary 
 to lexical scope, dynamic scope encloses not only 
 the current block, but also the subroutines called 
 from within the current block. Dynamic scope variables 
@@ -1622,7 +1622,7 @@ important.
 \index{binary tree}
 \index{tree!binary}
 
-The solution in Perl~6 uses a \verb'gather { take }' 
+The solution in Raku uses a \verb'gather { take }' 
 block and consists of just six~code lines:
 
 \begin{verbatim}
@@ -1634,12 +1634,12 @@ sub fringe ($tree) {
 sub samefringe ($a, $b) { fringe($a) eqv fringe($b) }
 \end{verbatim}
 
-Perl~6 is the clear winner in terms of the shortest code to 
+Raku is the clear winner in terms of the shortest code to 
 solve the problem.
 
 As a comparison, the Ada example is almost 300 lines long, 
 the C and Java programs slightly over 100 lines. By the way, 
-the shortest solutions besides Perl~6 (Clojure, Picolisp, 
+the shortest solutions besides Raku (Clojure, Picolisp, 
 Racket) run in about 20~lines and are all functional 
 programming languages, or (for Perl~5 for example) are 
 written using functional programming concepts. 
@@ -1654,13 +1654,13 @@ programming paradigm and its inherent expressiveness.
 \index{lazy!list}
 
 Let's come back now to the idea of lazy lists and study 
-how Perl~6 can handle and use them.
+how Raku can handle and use them.
 
 \subsection{The Sequence Operator}
 \index{sequence operator}
 \index{operator!sequence}
 
-Perl provides the \verb'...' sequence operator to build 
+Raku provides the \verb'...' sequence operator to build 
 lazy lists. For example, this:
 
 \begin{verbatim}
@@ -1669,7 +1669,7 @@ say $lazylist[42];                  # -> 42
 \end{verbatim}
 
 produces a lazy list of successive integers between 0 and 200. 
-The Perl~6 compiler may or may not allocate some of the numbers
+The Raku compiler may or may not allocate some of the numbers
 (depending on the implementation), but it is not required to 
 produce the full list immediately. The numbers that have not 
 been generated yet may be created and supplied later, if and when 
@@ -1700,7 +1700,7 @@ say @lazyarray.elems;               # -> 200
 
 Here, \verb'@lazyarray' is originally lazy. 
 Evaluating one item past the last element of the array 
-forces Perl to actually generate the full array (and the 
+forces Raku to actually generate the full array (and the 
 array is no longer lazy). After that, no further elements 
 can be generated, and {\tt .elems} stays at 200 (unless 
 you actually assign values to elements past the 200th 
@@ -1962,7 +1962,7 @@ process the other arguments.
 In some pure functional programming languages, a function 
 can only take one argument and return one result. Currying 
 is a technique aimed at coping with this apparent limitation. 
-Perl does not have such a limitation, but currying can still 
+Raku does not have such a limitation, but currying can still 
 be very useful to reduce and simplify the arguments lists 
 in subroutine calls, notably in cases of repeated recursive 
 calls.
@@ -1975,7 +1975,7 @@ The standard example is an \emph{add} function. Suppose
 we have an add mathematical function, \verb'add(x, y)', 
 taking two arguments and returning their sum. 
 
-In Perl, defining the {\tt add} subroutine is very simple:
+In Raku, defining the {\tt add} subroutine is very simple:
 \index{add}
 
 \begin{verbatim}
@@ -2072,7 +2072,7 @@ that the curried subroutine ``remembers'' the first
 two arguments and only the third argument needs be 
 passed to \verb'&string-start-chars'.
 
-You can even curry Perl~6 operators (or your own) if 
+You can even curry Raku operators (or your own) if 
 you wish:
 \index{assuming method}
 
@@ -2330,7 +2330,7 @@ out something like the following:
 
 The point is that it is difficult to understand the detailed 
 implementation of the algorithm, and fairly hard to debug, even 
-using the Perl debugger presented in section~\ref{perl-debugger}.
+using the Raku debugger presented in section~\ref{perl-debugger}.
 \index{debugger}
 \index{merge sort! non functional implementation}
 
@@ -2414,7 +2414,7 @@ This time, we will not really talk about debugging proper,
 but about a quite closely related activity, testing.
 
 Testing code is an integral part of software development. In 
-Perl~6, the standard {\tt Test} module (shipped and installed 
+Raku, the standard {\tt Test} module (shipped and installed 
 together with Rakudo) provides a testing framework which enables 
 automated, repeatable verification of code behavior.
 \index{test module}
@@ -2422,7 +2422,7 @@ automated, repeatable verification of code behavior.
 
 The testing functions emit output conforming to the \emph{Test 
 Anything Protocol} or TAP (\url{http://testanything.org/}), a 
-standardized testing format which has implementations in Perl, 
+standardized testing format which has implementations in Raku, 
 C, C++, C\#, Ada, Lisp, Erlang, Python, Ruby, Lua, PHP, Java, 
 Go, JavaScript, and other languages.
 
@@ -2442,7 +2442,7 @@ plan $num-tests;
 done-testing;  # optional with 'plan'
 \end{verbatim}
 
-We ensure that we're using Perl~6, via the use of the \verb'v6' 
+We ensure that we're using Raku, via the use of the \verb'v6' 
 pragma, then we load the \verb'Test' module and specify where 
 our libraries are. We then specify how many tests we plan 
 to run (such that the testing framework can tell us 
@@ -2539,7 +2539,7 @@ unlike 'foo', /bar/, 'foo does not look like bar';
 \end{verbatim}
 
 \item And many other functions which you can study in the 
-following documentation: \url{https://docs.perl6.org/language/testing.html}.
+following documentation: \url{https://docs.raku.org/language/testing.html}.
 
 \end{itemize}
 
@@ -2622,12 +2622,12 @@ if you need a refresher on the {\tt MAIN} subroutine.
 You can run these tests as follows:
 
 \begin{verbatim}
-$ perl6 is-palindrome.p6 abba
+$ raku is-palindrome.p6 abba
 'abba' is palindrome.
-$ perl6 is-palindrome.p6 abbaa
+$ raku is-palindrome.p6 abbaa
 'abbaa' is not palindrome.
 $
-$ perl6 is-palindrome.p6 --test
+$ raku is-palindrome.p6 --test
 1..4
 ok 1 - empty string
 ok 2 - odd-sized example
@@ -2655,12 +2655,12 @@ also a guarantee that you're supplying good quality software.
 Many organizations actually write their tests even before 
 writing the programs. This process is called 
 \emph{test-driven development} and there are many areas where 
-it is quite successful. In fact, the Rakudo/Perl~6 compiler 
+it is quite successful. In fact, the Rakudo/Raku compiler 
 had a very large test suite (more than 40,000 tests) long 
 before the compiler was ready. In a way, the test suite 
 even became the true specification of the project, so that 
 you could use the same test suite for verifying another 
-implementation of Perl~6.
+implementation of Raku.
 \index{test-driven development}
 
 An additional advantage of 
@@ -2677,7 +2677,7 @@ of the final number of code lines.
 
 \item[First-class object:] An object that can be passed around 
 as an argument to or as a return value from a subroutine. 
-In Perl, subroutines are first-class objects (also called 
+In Raku, subroutines are first-class objects (also called 
 first-class citizens). 
 \index{first-class object}
 \index{first-class citizen}
