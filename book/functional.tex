@@ -2330,7 +2330,7 @@ out something like the following:
 
 The point is that it is difficult to understand the detailed 
 implementation of the algorithm, and fairly hard to debug, even 
-using the Raku debugger presented in section~\ref{perl-debugger}.
+using the Raku debugger presented in section~\ref{raku-debugger}.
 \index{debugger}
 \index{merge sort! non functional implementation}
 
@@ -2585,7 +2585,7 @@ by writing something like this:
 \index{palindrome}
 
 \begin{verbatim}
-# file is-palindrome.p6
+# file is-palindrome.raku
 use v6;
 
 sub is-palindrome($s) { $s eq $s.flip }
@@ -2622,12 +2622,12 @@ if you need a refresher on the {\tt MAIN} subroutine.
 You can run these tests as follows:
 
 \begin{verbatim}
-$ raku is-palindrome.p6 abba
+$ raku is-palindrome.raku abba
 'abba' is palindrome.
-$ raku is-palindrome.p6 abbaa
+$ raku is-palindrome.raku abbaa
 'abbaa' is not palindrome.
 $
-$ raku is-palindrome.p6 --test
+$ raku is-palindrome.raku --test
 1..4
 ok 1 - empty string
 ok 2 - odd-sized example
