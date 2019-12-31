@@ -1140,7 +1140,7 @@ retrieve the arguments provided in the command line and
 possibly also check their validity.
 \index{signature}
 
-For example, the {\tt greet.pl6} program might look like 
+For example, the {\tt greet.raku} program might look like 
 this:
 \begin{verbatim}
 sub MAIN (Str $name) {
@@ -1152,10 +1152,10 @@ You may call this program twice with different command-line
 arguments as follows:
 
 \begin{verbatim}
-$ raku greet.pl6 Larry
+$ raku greet.raku Larry
 Hello Larry
 
-$ raku greet.pl6 world
+$ raku greet.raku world
 Hello world
 \end{verbatim}
 
@@ -1169,9 +1169,9 @@ the program will die and Raku will nicely generate and
 display a usage method:
 
 \begin{verbatim}
-$ raku greet.pl6
+$ raku greet.raku
 Usage:
-  greet.pl6 <name>
+  greet.raku <name>
 \end{verbatim}
 
 
@@ -1218,10 +1218,10 @@ multiplication-tables();
 It failed at compilation with the following error:
 
 \begin{verbatim}
-$ raku mult_table.pl6
-===SORRY!=== Error while compiling /home/Laurent/mult_table.pl6
+$ raku mult_table.raku
+===SORRY!=== Error while compiling /home/Laurent/mult_table.raku
 Missing block (taken by some undeclared routine?)
-at /home/Laurent/mult_table.pl6:9
+at /home/Laurent/mult_table.raku:9
 ------> multiplication-tables();<HERE><EOL>
 \end{verbatim}
 
@@ -1272,9 +1272,9 @@ then an exception on runtime:
 
 \begin{verbatim}
 Use of uninitialized value of type Any in numeric context 
-in block  at product.pl6 line 3
+in block  at product.raku line 3
 Attempt to divide 12 by zero using div
-  in block <unit> at product.pl6 line 4
+  in block <unit> at product.raku line 4
 \end{verbatim}
 %
 
