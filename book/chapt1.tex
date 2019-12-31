@@ -98,71 +98,70 @@ relatively easy.
 \index{black box}
 
 
-\section{Running Perl~6}
-\label{running_perl_6}
+\section{Running Raku}
+\label{running_raku}
 
-One of the challenges of getting started with Perl~6 is that you
-might have to install Perl~6 and related software on your computer. 
+One of the challenges of getting started with Raku is that you
+might have to install Raku and related software on your computer. 
 If you are familiar with your operating system, and especially
 if you are comfortable with the shell or command-line interface, 
-you will have no trouble installing Perl~6.  But for beginners, 
+you will have no trouble installing Raku.  But for beginners, 
 it can be painful to learn about system administration and 
 programming at the same time.
 
-To avoid that problem, you can start out running Perl~6 
+To avoid that problem, you can start out running Raku 
 in a web browser. You might want to use a search engine 
 to find such a site. Currently, the easiest is probably 
-to connect to the \url{https://glot.io/new/perl6} site, 
-where you can type some Perl~6 code in the main window, run 
-it, and see the result in the output window below.
-\index{Perl~6 in a browser}
+to connect to the \url{https://repl.it/languages/raku} site, 
+where you can type some Raku code in the main window, run 
+it, and see the result in the output window below. Another 
+possibility you might want to try is the \url{https://glot.io/new/raku} 
+site. There are probably some others.
+\index{Raku in a browser}
 
 Sooner or later, however, you will really need to install 
-Perl~6 on your computer.
+Raku on your computer.
 
-The easiest way to install Perl~6 on your system is to 
-download Rakudo Star (a distribution of Perl~6 that contains 
-the Rakudo Perl~6 {\bf compiler}, documentation and useful modules): 
+The easiest way to install Raku on your system is to 
+download Rakudo Star (a distribution of Raku that contains 
+the Rakudo Raku {\bf compiler}, documentation and useful modules): 
 follow the instructions for your operating system at 
 \url{http://rakudo.org/how-to-get-rakudo/} and at 
-\url{https://perl6.org/downloads/}. 
+\url{https://raku.org/downloads/}. You may also want to look at 
+third-party packages using for example Docker or Chocolately.
 
 \index{Perl 6 version}
 As of this writing, the most recent specification of 
-the language is Perl~6 version 6c (v6.c), and the most 
-recent release available for download is Rakudo Star 2016.07; 
+the language is Raku version 6d (v6.d), and the most 
+recent release available for download is Rakudo Star 2019.03; 
 the examples in this book should 
 all run with this version. You can find out the installed 
 version by issuing the following command at the operating 
 system prompt:
 \begin{verbatim}
-$ perl6 -v
-This is Rakudo version 2016.07.1 built on MoarVM version 2016.07
-implementing Perl 6.c.
+$ raku -v
+This is Rakudo Star version 2019.03.1 built on MoarVM version 2019.03
+implementing Perl 6.d.
 \end{verbatim}
 
 However, you should probably download and install the most recent 
 version you can find. The output (warnings, error messages, 
-etc.) you'll get from your version of Perl might in some 
+etc.) you'll get from your version of Raku might in some 
 cases slightly differ from what is printed in this book, 
 but these possible differences should essentially be 
 only cosmetic. 
 
-Compared to Perl~5, Perl~6 is not just a new version of Perl. 
-It is more like the new little sister of Perl~5. It does not 
-aim at replacing Perl~5. Perl~6 is really a new programming language, 
-with a syntax that is similar to earlier versions of 
-Perl (such as Perl~5), but still markedly different. Unless 
-stated otherwise, this book is about Perl~6 only, not about Perl~5 
-and preceding versions of the Perl programming language. From now on, 
-whenever we speak about \emph{Perl} with no further qualification, 
-we mean Perl~6.
+Raku is derived from Perl, and it intends to carry forward the 
+high ideals of the Perl community. But, compared to Perl~5, 
+Raku is not just a new version of Perl. It does not 
+aim at replacing Perl~5. Raku is really a new programming language, 
+with a syntax that is similar to Perl~5.
 
-The Perl~6 {\bf interpreter} is a program that reads and 
-executes Perl~6 code. It is sometimes called REPL (for ``read, 
+The Raku {\bf interpreter} is a program that reads and 
+executes Raku code. It is sometimes called REPL (for ``read, 
 evaluate, print, loop''). Depending on your environment, you 
 might start the interpreter by clicking on an icon, or by 
-typing {\tt perl6} on a command line.
+typing {\tt raku} on a command line.
 
 When it starts, you should see output like this:
 \index{interpreter}
@@ -170,7 +169,7 @@ When it starts, you should see output like this:
 
 \begin{verbatim}
 To exit type 'exit' or '^D'
-(Possibly some information about Perl and related software)
+(Possibly some information about Raku and related software)
 > 
 \end{verbatim}
 %
@@ -190,7 +189,7 @@ result:
 You can type exit at the REPL prompt to exit the REPL.
 
 Now you're ready to get started.
-From here on, we assume that you know how to start the Perl~6
+From here on, we assume that you know how to start the Raku
 REPL and run code.
 
 
@@ -200,7 +199,7 @@ REPL and run code.
 
 Traditionally, the first program you write in a new language
 is called ``Hello, World'' because all it does is display the
-words ``Hello, World.''  In Perl~6, it looks like this:
+words ``Hello, World.''  In Raku, it looks like this:
 
 \begin{verbatim}
 > say "Hello, World";
@@ -212,7 +211,7 @@ Hello, World
 \index{function!say}
 This is an example of what is usually called a {\bf print statement}, although it
 doesn't actually print anything on paper and doesn't even 
-use the {\tt print} keyword \footnote{Perl also has a {\tt print} 
+use the {\tt print} keyword \footnote{Raku also has a {\tt print} 
 function, but the {\tt say} built-in function is used here 
 because it adds a new line character to the output.} (keywords are 
 words which have a special meaning to the language and are 
@@ -237,13 +236,13 @@ instructions with a semi-colon.
 
 Many other programming languages would require parentheses 
 around the sentence to be displayed, but this is usually 
-not necessary in Perl~6.
+not necessary in Raku.
 
 \section{Arithmetic Operators}
 \index{operator!arithmetic}
 \index{arithmetic operator}
 
-After ``Hello, World,'' the next step is arithmetic.  Perl~6 provides
+After ``Hello, World,'' the next step is arithmetic.  Raku provides
 {\bf operators}, which are special symbols that represent computations
 like addition and multiplication.  
 
@@ -268,7 +267,7 @@ statement in these examples, as the REPL automatically
 prints out the result of the statements for us. In a real 
 program, you would need a print statement to display 
 the result, as we'll see later. Similarly, if you run 
-Perl statements in the web browser mentioned in 
+Raku statements in the web browser mentioned in 
 Section~\ref{running_perl_6}, you will need a 
 print statement to display the result of these operations. 
 For example:
@@ -288,7 +287,7 @@ it raises a number to a power:
 %
 In some other languages, the caret (``\verb"^"'') or 
 circumflex accent is used for exponentiation, but in 
-Perl~6 it is used for some other purposes.
+Raku it is used for some other purposes.
 %
 \index{set}
 \index{set!operator}
@@ -313,7 +312,7 @@ because the characters it contains are strung together.
 \index{integer}
 \index{floating-point}
 
-If you are not sure what type a value has, Perl can
+If you are not sure what type a value has, Raku can
 tell you:
 
 \begin{verbatim}
@@ -332,7 +331,7 @@ tell you:
 %
 In these instructions, {\tt .WHAT} is known as an 
 introspection method, that is a kind of method which 
-will tell you \emph{what} (of  which type) the preceding 
+will tell you \emph{what} (of which type) the preceding 
 expression is. {\tt 42.WHAT} is an example of the dot 
 syntax used for method invocation: it calls the {\tt .WHAT} 
 built-in on the ``42'' expression (the invocant) and provides 
@@ -363,7 +362,7 @@ languages. Internally, these numbers are stored as two
 integers representing the numerator and the denominator 
 (in their simplest terms). For example, the number 17.3 
 might be stored as two integers, 173 and 10, meaning that 
-Perl is really storing something meaning the $\frac{173}{10}$ 
+Raku is really storing something meaning the $\frac{173}{10}$ 
 fraction. Although this is usually not needed (except 
 for introspection or debugging), you might access these 
 two integers with the following methods:
@@ -386,7 +385,7 @@ two integers with the following methods:
 \index{method!nude}
 %
 This may seem anecdotal, but, for reasons which are 
-beyond the scope of this book, this makes it possible for Perl~6 
+beyond the scope of this book, this makes it possible for Raku 
 to perform arithmetical operations on rational numbers with 
 a much higher accuracy than most common programming languages. 
 For example, if you try to perform the arithmetical operation
@@ -397,7 +396,7 @@ might obtain a result such as -2.77555756156289e-17 (in Perl~5),
 (Java, Python~3, Ruby, TCL). Don't worry about these values if you 
 don't understand them, let us just say that they  are 
 extremely small, but they are not 0, whereas,  
-obviously, the result should really be zero. In Perl~6, 
+obviously, the result should really be zero. In Raku, 
 the result is 0 (even to the fiftieth decimal digit):
 \begin{verbatim}
 > my $result-should-be-zero = 0.3 - 0.2 - 0.1;
@@ -406,7 +405,7 @@ the result is 0 (even to the fiftieth decimal digit):
 0.00000000000000000000000000000000000000000000000000
 \end{verbatim}
 %
-In Perl~6, you might even compare the result of the operation with 0:
+In Raku, you might even compare the result of the operation with 0:
 \begin{verbatim}
 > say $result-should-be-zero == 0;
 True
@@ -421,7 +420,7 @@ strings.
 \index{quotation mark}
 
 \begin{verbatim}
-> say '2'.perl; # perl returns a Perlish representation of the invocant
+> say '2'.perl; # perl returns a representation of the invocant that could be compiled
 "2"
 > say "2".WHAT;
 (Str)
@@ -432,13 +431,13 @@ strings.
 \index{invocant}
 
 They're strings because they are defined within quotes. Although 
-Perl will often perform the necessary conversions for you, it 
+Raku will often perform the necessary conversions for you, it 
 is generally a good practice not to use quotation marks if your value 
 is intended to be a number.
 
 When you type a large integer, you might be tempted to use commas
 between groups of digits, as in {\tt 1,234,567}.  This is not a
-legal {\em integer} in Perl~6, but it is a legal expression:
+legal {\em integer} in Raku, but it is a legal expression:
 
 \begin{verbatim}
 > 1,234,567
@@ -454,7 +453,7 @@ not what we expected at all!
 (List)
 \end{verbatim}
 
-Perl~6 interprets {\tt 1,234,567} as a comma-separated 
+Raku interprets {\tt 1,234,567} as a comma-separated 
 sequence of three integers.  As we will see later, 
 the comma is a separator used for constructing lists.
 \index{comma}
@@ -663,7 +662,7 @@ that it is ready to take input from the user.
 \item[Program] A set of instructions that specifies a computation.
 \index{program}
 
-\item[Print statement]  An instruction that causes the Perl~6
+\item[Print statement]  An instruction that causes the Raku
 interpreter to display a value on the screen.
 \index{print statement}
 \index{statement!print}
@@ -685,7 +684,7 @@ Rat}), and strings (type {\tt Str}).
 \index{integer}
 
 \item[Rational] A type that represents numbers with fractional
-parts. Internally, Perl stores a rational as two integers 
+parts. Internally, Raku stores a rational as two integers 
 representing respectively the numerator and the denominator 
 of the fractional number.
 \index{rational}
@@ -743,7 +742,7 @@ Please note that most exercises in this book are provided with
 a solution in the appendix. However, the exercises in this chapter   
 and in the next chapter are not intended to let you solve an 
 actual problem but are designed to simply let you experiment 
-with the Perl interpreter; there is no good solution, just try 
+with the Raku interpreter; there is no good solution, just try 
 out what is proposed to get a feeling on how it works.
 
 \begin{enumerate}
@@ -756,7 +755,7 @@ leave out one of the quotation marks, or both?
 What about {\tt 2++2}?
 
 \item In math notation, leading zeros are OK, as in {\tt 02}.
-What happens if you try this in Perl?
+What happens if you try this in Raku?
 
 \item What happens if you have two values with no operator
 between them, such as {\tt say 2 2;}?
@@ -769,7 +768,7 @@ between them, such as {\tt say 2 2;}?
 
 \begin{exercise}
 
-Start the Perl~6 REPL interpreter and use it as a calculator.
+Start the Raku REPL interpreter and use it as a calculator.
 
 \begin{enumerate}
 
