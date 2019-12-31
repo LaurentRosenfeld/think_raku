@@ -2,7 +2,7 @@
 \chapter{Case Study: Data Structure Selection}
 \label{data_struct_sel}
 
-At this point you have learned about Perl's core data structures,
+At this point you have learned about Raku's core data structures,
 and you have seen some of the algorithms that use them.
 
 This chapter presents a case study with exercises that let
@@ -81,7 +81,7 @@ provides a more powerful {\tt switch} type of statement.
 \index{when statement}
 \index{switch statement}
 
-Perl~6 has a ``switch'' statement, written with the 
+Raku has a ``switch'' statement, written with the 
 {\tt given} and {\tt when} keywords. The 
 {\tt given} keyword introduces the variable or expression 
 that will be tested, and each of the {\tt when} 
@@ -409,7 +409,7 @@ Pseudorandom numbers are not truly random because they are generated
 by a deterministic computation, but just by looking at the numbers it
 is all but impossible to distinguish them from random.
 
-Perl provides functions such as {\tt rand} that generate
+Raku provides functions such as {\tt rand} that generate
 pseudorandom numbers (which we will simply call ``random'' 
 numbers from here on).
 \index{rand function}
@@ -431,7 +431,7 @@ might try it as a one-liner:
 \index{one-liner mode}
 
 \begin{verbatim}
-$ perl6 -e 'say 10.rand for 1..5'
+$ raku -e 'say 10.rand for 1..5'
 8.23987158729588
 9.83276889381497
 2.52313276833335
@@ -448,7 +448,7 @@ the {\tt Int} and {\tt rand} methods:
 \index{Int function or method}
 
 \begin{verbatim}
-$ perl6 -e 'say 10.rand.Int + 1 for 1..5'
+$ raku -e 'say 10.rand.Int + 1 for 1..5'
 5
 10
 1
@@ -517,7 +517,7 @@ project slightly modified the format of this file after this
 chapter was written. To avoid any problem associated with this 
 change (and any other future changes), you can download the 
 original file from my Github repository: 
-\url{https://github.com/LaurentRosenfeld/thinkperl6/blob/master/Supplementary/emma.txt}.} Use the same 
+\url{https://github.com/LaurentRosenfeld/think_raku/blob/master/Supplementary/emma.txt}.} Use the same 
 text if you want to compare your solutions and results 
 with mine.
 \index{Austin, Jane}
@@ -561,7 +561,7 @@ The \verb"process-line" subroutine skips the header lines
 is met \footnote{This line is no longer present in the new version of 
 the Emma file currently on the Gutenberg project site. So this will 
 work only with my version of this file on my Github repository:  
-\url{https://github.com/LaurentRosenfeld/thinkperl6/blob/master/Supplementary/emma.txt}.}). It replaces dashes and apostrophes with spaces, removes 
+\url{https://github.com/LaurentRosenfeld/think_raku/blob/master/Supplementary/emma.txt}.}). It replaces dashes and apostrophes with spaces, removes 
 various punctuation characters, and sets the line to lower case. 
 Finally, it splits the line into individual words that are 
 stored and counted with an accumulator in the \verb'%histogram' 
@@ -832,12 +832,12 @@ we could have used an array as well.
 
 Learning about hash subtraction is an excellent 
 opportunity to introduce a very interesting functionality of 
-Perl~6: the capacity to construct new operators or to 
+Raku: the capacity to construct new operators or to 
 redefine existing ones.
 
 Since we are subtracting two lists of words, it is tempting to 
 use the minus sign to denote this subtraction operation. It  
-is very easy to create such an operator in Perl~6:
+is very easy to create such an operator in Raku:
 
 \begin{verbatim}
 multi sub infix:<-> (%main, %dict) {
@@ -857,12 +857,12 @@ multi sub infix:<-> (%main, %dict) {
 Compared to the definition of the {\tt subtract} subroutine, the 
 only differences are in the header line. We will cover the 
 details in a later chapter, but let us briefly explain here.
-Most Perl~6 operators are defined as ``multi'' subroutines, 
+Most Raku operators are defined as ``multi'' subroutines, 
 i.e., subroutines that can be defined several times with 
-different signatures and bodies; Perl will know which one to use depending 
+different signatures and bodies; Raku will know which one to use depending 
 on the signature. Here we define the minus operator as a 
 multi subroutine whose parameters are two hashes; this will be 
-enough for the Perl compiler to know that we don't want 
+enough for the Raku compiler to know that we don't want 
 the regular subtraction between numerical values, but something 
 else that applies to two hashes. The minus operator is defined as 
 ``infix,'' which means that the operator will be placed 
@@ -880,7 +880,7 @@ The rest of the program works just as before.
 
 \index{extending the language}
 This ease or creating new operators is one of the facilities 
-offered by Perl~6 to \emph{extend the language} from within itself. 
+offered by Raku to \emph{extend the language} from within itself. 
 We'll come back to that and other ways to extend the language 
 in later chapters.
 
@@ -916,7 +916,7 @@ Solution: \ref{sol_fact_operator}
 \index{mixhash}
 \index{type!mixhash}
 
-Perl~6 has a variety of data structure types called {\tt Set}, 
+Raku has a variety of data structure types called {\tt Set}, 
 {\tt Bag} and {\tt Mix} that provide many common set 
 operations. They are unordered collections of unique and 
 weighed items. They are immutable (but there also exist mutable 
@@ -1039,7 +1039,7 @@ say $unknown-words.keys.head(20);
 There are more than 30~set operators available, covering most of 
 the set operators used in mathematics. I've only shown 
 some that are the most likely to be useful. Check into the 
-official documentation (\url{https://doc.perl6.org/language/setbagmix}) 
+official documentation (\url{https://doc.raku.org/language/setbagmix}) 
 if you need some others.
 
 \label{diff_with_set}
@@ -1107,7 +1107,7 @@ word from \emph{emma.txt}.
 Solution: \ref{sol_randhist}
 \end{exercise}
 
-Note that Perl offers a shortcut to perform the task 
+Note that Raku offers a shortcut to perform the task 
 at hand: when used on a bag, {\tt pick} returns a random 
 selection of elements, weighted by the values corresponding 
 to each key. Ideally, we should have used a bag instead of 
@@ -1367,7 +1367,7 @@ generation exceeded the time spent in conversion.
 
 \section{Building Your Own Data Structures}
 
-Perl has a number of compound types such as arrays and hashes 
+Raku has a number of compound types such as arrays and hashes 
 that you can combine to construct arrays of arrays, arrays of 
 hashes, hashes of arrays, hashes of hashes, arrays of arrays of 
 arrays or hashes, and so on, and this is usually sufficient for 
@@ -1386,7 +1386,7 @@ study a couple of them.
 A linked list is a collection of items in which each item holds 
 a value (or several values) and a link to the next item of the 
 collection. In many programming languages, arrays have a fixed 
-size (contrary to Perl in which arrays can usually grow according to 
+size (contrary to Raku in which arrays can usually grow according to 
 your needs). In those programming languages, a linked list 
 is often used to represent a variable-size collection of items.
 
@@ -1397,10 +1397,10 @@ lists for that.
 \index{stack}
 \index{queue}
 
-In Perl, a linked list item may be represented by a pair 
+In Raku, a linked list item may be represented by a pair 
 (an object of type \verb'Pair'). The 
 following code is a very simple example showing how 
-we could implement a stack using a linked list in Perl:
+we could implement a stack using a linked list in Raku:
 \index{pair}
 
 \begin{verbatim}
@@ -1441,7 +1441,7 @@ Once populated, the resulting stack looks like this:
 
 This is just given as an example for the construction of a 
 linked list. There is usually no need to use anything like 
-this in Perl, since it is much easier to implement 
+this in Raku, since it is much easier to implement 
 a stack using an array, as seen in Section~\ref{stacks_queues}, 
 although the same principle can be used for building more 
 advanced data structures.
@@ -1501,7 +1501,7 @@ my $tree = 1 => (( 2 => 3 ) => (4 => (5 => ((6 => 7) => 8))));
 
 The implementation is left as an exercise to the reader. 
 
-Quite often, though, a tree may be implemented in Perl 
+Quite often, though, a tree may be implemented in Raku 
 as a simpler data structure such as a nested array or hash. 
 The next section examines such an example.
 
@@ -1698,13 +1698,13 @@ build scaffolding.
 program that enables you to run a program step by step, 
 so you can follow the execution path and check the content of important 
 variables at crucial points in the program execution, to set 
-break points, etc. Perl~6 provides a debugger, called 
-{\tt perl6-debug}, that makes all these things possible. With the 
+break points, etc. Raku provides a debugger, called 
+{\tt raku-debug}, that makes all these things possible. With the 
 advent of modern high-level languages, many people balk at 
 using a debugger. This is a mistake. A debugger will not help 
 solve every kind of problem, but it can be immensely 
-useful. See Section~\ref{perl-debugger} for more information
-on the Perl debugger.
+useful. See Section~\ref{raku-debugger} for more information
+on the Raku debugger.
 \index{debugger}
 
 \item[Ruminating] Take some time to think!  What kind of error
@@ -1801,7 +1801,7 @@ line and check its state at any step during its execution.
 \item[Rubber duck debugging] Debugging by explaining your problem
 to an inanimate object such as a rubber duck.  Articulating the
 problem can help you solve it, even if the rubber duck 
-doesn't know Perl. 
+doesn't know Raku. 
 \index{rubber duck debugging}
 \index{debugging!rubber duck}
 
