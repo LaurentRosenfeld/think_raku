@@ -633,18 +633,18 @@ Now, if we call {\tt recurse} with a negative value for
 \begin{verbatim}
 Args : n = -1, s = 0
 STOP! negative $n, we need to give up
-  in sub recurse at recurse2.pl6 line 6
-  in block <unit> at recurse2.pl6 line 12
+  in sub recurse at recurse2.raku line 6
+  in block <unit> at recurse2.raku line 12
 \end{verbatim}
 %
 
 And if we call it with a non integer value for \verb'$n':
 
 \begin{verbatim}
-===SORRY!=== Error while compiling recurse2.pl6
+===SORRY!=== Error while compiling recurse2.raku
 Calling recurse(Rat, Int) will never work with declared
 signature (Int $n, Int $s)
-at recurse2.pl6:12
+at recurse2.raku:12
 ------> <BOL><HERE>recurse 1.5, 0;
 \end{verbatim}
 %
@@ -684,11 +684,11 @@ first version of {\tt recurse} will be called.
 Otherwise, the second version that will run:
 
 \begin{verbatim}
-$ raku recurse.pl6
+$ raku recurse.raku
 Args : n = 6.1, s = 0
 STOP! negative $n, we need to give up
 
-$ raku recurse.pl6
+$ raku recurse.raku
 Args : n = -1, s = 0
 STOP! invalid $n, we need to give up
 \end{verbatim}
@@ -3169,7 +3169,7 @@ for <ban bane post stop pots stop post pots pots taps> -> $w1, $w2 {
 
 This produces the following output:
 \begin{verbatim}
-$ raku anagrams.pl6
+$ raku anagrams.raku
 ban bane:       False
 post stop:      True
 pots stop:      True
@@ -3343,16 +3343,16 @@ Running the program four times gave the following
 results:
 
 \begin{verbatim}
-$ raku birthdays.pl6
+$ raku birthdays.raku
 On 1000 tests, 498 had at least one duplicate birthday
 
-$ raku birthdays.pl6
+$ raku birthdays.raku
 On 1000 tests, 505 had at least one duplicate birthday
 
-$ raku birthdays.pl6
+$ raku birthdays.raku
 On 1000 tests, 527 had at least one duplicate birthday
 
-$ raku birthdays.pl6
+$ raku birthdays.raku
 On 1000 tests, 491 had at least one duplicate birthday
 \end{verbatim}
 
@@ -4393,7 +4393,7 @@ ok 2 - Factorial fails for 2.5
 not ok 3 - Factorial 0
 
 # Failed test 'Factorial 0'
-# at test_fact.pl6 line 8
+# at test_fact.raku line 8
 ok 4 - Factorial 1
 ok 5 - Factorial of a larger integer
 1..5
@@ -4612,9 +4612,9 @@ signature, the program will die after having printed an
 automatically generated usage message:
 
 \begin{verbatim}
-$ raku  markov.pl6 emma.txt 100 2 foo
+$ raku  markov.raku emma.txt 100 2 foo
 Usage:
-  markov.pl6 <book> <word-count> [<order>] [<start-line>]
+  markov.raku <book> <word-count> [<order>] [<start-line>]
 \end{verbatim}
 The \verb'$start-line' parameter has to be an integer. Since 
 the corresponding argument (``foo'') is not an integer, the 
@@ -4680,7 +4680,7 @@ This program may be called on the \emph{emma.txt} file with
 the following syntax:
 
 \begin{verbatim}
-$ raku  markov.pl6 emma.txt 100 2 253
+$ raku  markov.raku emma.txt 100 2 253
 \end{verbatim}
 
 \subsection{Exercises on the Huffman Code in Section~\ref{huffman_exercise} (p.~\pageref{huffman_exercise})}
