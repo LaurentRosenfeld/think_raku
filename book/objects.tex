@@ -17,7 +17,7 @@ way to manage this complexity is to use abstraction and
 encapsulation. Object orientation is a very popular and efficient 
 way to implement abstraction and encapsulation.
 
-Perl~6 is an {\bf object-oriented programming language}, which means
+Raku is an {\bf object-oriented programming language}, which means
 that it provides features that support object-oriented
 programming, which has these defining characteristics:
 \index{object-oriented programming}
@@ -38,7 +38,7 @@ often correspond to the ways things in the real world interact.
 
 
 Object-oriented programming in 
-Perl~6 is a big topic that may be worth a book by itself (and 
+Raku is a big topic that may be worth a book by itself (and 
 there will probably be a book or two on the subject at some point). 
 This chapter will hopefully do more than just skim the surface 
 and enable you to create and use objects, but will not 
@@ -78,7 +78,7 @@ common to all objects of the same type.
 \item A {\bf state} defined by some special variables (called, 
 depending on the language, attributes, instance data, fields, 
 or members); the state may change over time and is generally 
-specific to each object. In Perl, we speak about 
+specific to each object. In Raku, we speak about 
 {\bf attributes}.
 \index{object!state}
 \index{object!attribute}
@@ -91,7 +91,7 @@ together.
 \index{class}
 Objects are usually defined in a kind of code package called 
 a {\bf class}. A class defines the methods and the nature of 
-the attributes associated with an object. In Perl~6, a class makes it 
+the attributes associated with an object. In Raku, a class makes it 
 possible to define new types similar to the built-in types 
 that we have seen before. Very soon, we will start to define 
 some classes and to use them to create objects.
@@ -111,7 +111,7 @@ method on a simple string:
 \end{verbatim}
 
 Note that ``foo'' isn't an object, but a simple string, but 
-you can invoke the \verb'say' method on it, because Perl 
+you can invoke the \verb'say' method on it, because Raku 
 can treat it internally as an object when needed. In some 
 OOP languages, this implicit conversion of a native type 
 into an object is sometimes called autoboxing.
@@ -132,7 +132,7 @@ my @alphabet = <charlie foxtrot alpha golf echo bravo delta>;
 \index{role}
 In OOP, methods applicable to objects are usually defined 
 within classes, often the class that also defined the 
-object or some other class closely related to it. In Perl~6, 
+object or some other class closely related to it. In Raku, 
 methods can also be defined in a {\bf role}, which is 
 another type of code package somewhat resembling to a class, 
 as we will see later.
@@ -161,7 +161,7 @@ the properties of the {\bf parent class}, which is a powerful tool
 for code reuse.
 \end{itemize}
 
-We will now study how all these concepts are implemented in Perl.
+We will now study how all these concepts are implemented in Raku.
 
 
 \section{Programmer-Defined Types}
@@ -169,7 +169,7 @@ We will now study how all these concepts are implemented in Perl.
 \index{programmer-defined type}
 \index{type!programmer-defined}
 
-We have used many of Perl's built-in types; now we are going
+We have used many of Raku's built-in types; now we are going
 to define a new type.  As an example, we will create a type
 called {\tt Point2D} that represents a point in 
 two-dimensional space.
@@ -187,7 +187,7 @@ the abscissa of the point, and $y$ the ordinate.
 \index{coordinates!rectangular}
 \index{rectangular coordinates}
 
-There are several ways we might represent points in Perl:
+There are several ways we might represent points in Raku:
 
 \begin{itemize}
 
@@ -256,7 +256,7 @@ You can of course create as many points as you wish.
 \index{object!constructor}
 The {\tt new} method is called a {\bf constructor} and has not 
 been defined in this example; this is not needed because 
-Perl~6 supplies a default {\tt new} constructor method for 
+Raku supplies a default {\tt new} constructor method for 
 every class (we'll see later how). The method invocation 
 syntax, with the dot notation, is the same as what we have 
 used throughout the book to invoke built-in methods. You 
@@ -340,7 +340,7 @@ as in \verb'$.abscissa':
 %
 \index{accessor}
 \index{method!accessor}
-Perl automatically creates an implicit \emph{accessor} method, 
+Raku automatically creates an implicit \emph{accessor} method, 
 i.e., a method having the same name as the attribute that returns 
 the value of this attribute. Thus, when we wrote:
 
@@ -373,7 +373,7 @@ an exclamation mark twigil instead of a dot:
 %
 \index{attribute!private}
 \index{private attribute}
-In that case, Perl does not create an implicit accessor method 
+In that case, Raku does not create an implicit accessor method 
 and the attribute can only be accessed from methods within 
 the class. Such an attribute is now fully private. 
 However, if you declare attributes this way, you 
@@ -496,7 +496,7 @@ defined in different classes (or different roles), a method
 invocation involves a \emph{dispatch} phase, in 
 which the object system selects which method to call, usually 
 based on the class or type of the invocant. However, in 
-Perl~6, that difference is blurred by the fact that you can 
+Raku, that difference is blurred by the fact that you can 
 have multi subroutines, i.e., subroutines with the same name 
 and a different signature that are also resolved at run time, 
 depending on the \emph{arity} (number of arguments) and type of 
@@ -1074,7 +1074,7 @@ Polar coordinates: radius = 15.6205, theta (rad) = 0.8761
 \index{coordinates!polar}
 Here, when the user code invokes the {\tt coordinates}, 
 {\tt distance2center}, and {\tt polar-coordinates} methods, 
-Perl finds that they do not exist in {\tt MovablePoint}. But,  
+Raku finds that they do not exist in {\tt MovablePoint}. But,  
 as \verb'MovablePoint' subclasses {\tt Point2D}, the program 
 looks for methods having these names in the parent class and 
 invokes them if it finds them. 	If it did not find them, it 
@@ -1093,7 +1093,7 @@ several other classes. This is what is called {\bf multiple
 inheritance}. We might want to build a new {\tt MovablePixel} 
 class inheriting from both {\tt MovablePoint} and {\tt Pixel} 
 (and, indirectly, from {\tt Point2D}). Technically, you can 
-easily do it in Perl:
+easily do it in Raku:
 
 \begin{verbatim}
 class MovablePixel is MovablePoint is Pixel {
@@ -1112,7 +1112,7 @@ complicated than expected in real situations. If there is a
 conflict (for example a name collision between two methods), 
 which one shall prevail? Some mechanisms exist to 
 handle such situations (for example in the C++ programming 
-language), and Perl has some metaobject methods to find out 
+language), and Raku has some metaobject methods to find out 
 about the method resolution order (MRO), but this 
 might quickly leads to severe design 
 problems and to really subtle or complicated bugs. In 
@@ -1126,13 +1126,13 @@ OO programming languages such as Java (which came out not
 so recently, back in 1995) have decided not to implement 
 multiple inheritance.
 
-Perl~6 does not want to forbid such things and allows you 
+Raku does not want to forbid such things and allows you 
 to use multiple inheritance if you wish, and it can be useful 
 for simple cases; so don't necessarily rule it out, but 
 remember that, contrary to early expectations, it often 
 leads to a mess and turns out to be quite unmanageable.
 
-Perl offers better concepts for tackling such situations,
+Raku offers better concepts for tackling such situations,
 as we will see shortly.
 
 \section{Roles and Composition}
@@ -1186,7 +1186,7 @@ rarely so hierarchical, and it is often difficult to force
 everything to fit into such a hierarchical model.
 
 \index{role}
-This is one of the reasons why Perl introduces the notion of 
+This is one of the reasons why Raku introduces the notion of 
 roles. A role is a set of behaviors or actions that can be shared 
 between various classes. Technically, a role is a collection 
 of methods (with possibly some attributes); it is therefore 
@@ -1381,7 +1381,7 @@ will be implemented.
 
 The code example above draws an ASCII rectangle:
 \begin{verbatim}
-~ perl6 test_drawable.pl6
+~ raku test_drawable.raku
 xxxxxxxxxx
 xxxxxxxxxx
 xxxxxxxxxx
@@ -1433,7 +1433,7 @@ role Blind {
 \end{verbatim}
 
 \index{type!built-in}
-A number of Perl~6 built-in types are defined by roles and 
+A number of Raku built-in types are defined by roles and 
 not by classes, such as {\tt IO}, {\tt Iterable}, 
 {\tt Iterator}, {\tt Numeric}, {\tt Rational}, {\tt Real},
 etc.
@@ -1449,7 +1449,7 @@ languages implementing delegation are rather rare.
 
 Rather than defining methods in a class or in a role, the 
 idea is to invoke methods belonging to another object, as 
-if they were methods of the current class. In Perl~6, delegation 
+if they were methods of the current class. In Raku, delegation 
 may be performed at the level of a class or a role. A delegated 
 object is simply an attribute defined in the class or in the role 
 with the {\tt handles} keyword which makes it possible to specify 
@@ -1485,7 +1485,7 @@ Cervantes
 Shakespeare
 Chekhov
 Method 'Don-Carlos' not found for invocant of class 'Uses'
-  in block <unit> at delegate.pl6 line 16
+  in block <unit> at delegate.raku line 16
 \end{verbatim}
 \index{invocant}
 
@@ -1547,7 +1547,7 @@ interface.
 
 \index{multi!subroutine}
 \index{invocant}
-Outside of object-oriented programming, Perl's 
+Outside of object-oriented programming, Raku's 
 \emph{multi} subroutines implement a form of polymorphism, 
 since they can behave differently depending on the 
 type and number of their arguments. Within the OOP context, 
@@ -1677,7 +1677,7 @@ visibility level specified for an attribute, for example
 ``protected'' level).
 
 \index{attribute!private}
-Perl~6 lets you choose the encapsulation model you want to 
+Raku lets you choose the encapsulation model you want to 
 apply to your objects and attributes. All attributes are 
 private. If you declare a class as follows:
 
@@ -1707,7 +1707,7 @@ class Point2D {
 }
 \end{verbatim}
 
-the coordinates will still be private attributes, but Perl~6 
+the coordinates will still be private attributes, but Raku 
 will automatically generate accessor methods having the same 
 names as the attributes, so that it will be possible to access 
 them from outside the class almost as if they were public:
@@ -1724,7 +1724,7 @@ say $point.abscissa;       # -> 2
 \index{attribute!mutable}
 \index{attribute!immutable}
 Whether the attribute is mutable or not is managed separately 
-by the {\tt is rw} trait. In brief, Perl~6 offers a default 
+by the {\tt is rw} trait. In brief, Raku offers a default 
 access mode, but you can fine-tune it and what you need.
 
 
@@ -1747,7 +1747,7 @@ of the internal cooking recipes of the class, i.e., the way it does
 things internally, and that are not 
 meant to be used from outside the class. It is possible to prevent 
 their use from outside the class by making these methods private. 
-A Perl~6 private method is prefixed with an exclamation mark:
+A Raku private method is prefixed with an exclamation mark:
 
 \begin{verbatim}
 method !private-behavior($x, $y) {
@@ -1866,7 +1866,7 @@ Initialization!
 
 This works because the default {\tt new} constructor, a method 
 defined in the {\tt Mu} ultimate superclass and inherited by 
-default by any Perl~6 class, calls 
+default by any Raku class, calls 
 the default {\tt BUILD} submethod. If we redefine {\tt BUILD} 
 in our class, it will supersede the default one 
 called by {\tt new}. By redefining {\tt BUILD}, we force 
@@ -2116,14 +2116,14 @@ have been otherwise.
 \index{tale about OOP}
 
 \emph{The fable of this section is adapted 
-from a post by ``Arunbear'' on the ``PerlMonks'' 
+from a post by ``Arunbear'' on the ``RakuMonks'' 
 website: \url{http://www.perlmonks.org/?node_id=1146129}. 
 Thanks to ``Arunbear'' for authorizing me 
 to reuse it.}
 
 
 \section{Debugging}
-\label{perl-debugger}
+\label{raku-debugger}
 \index{debugger}
 \index{debugger!using a}
 
@@ -2146,17 +2146,17 @@ seriously tried. Whether you like debuggers or not is
 probably a matter of personal taste, but they can provide an 
 invaluable help, if you know how to use them.
 
-\subsection{The Perl~6 Debugger}
+\subsection{The Raku Debugger}
 
-\index{debugger!the Perl~6 debugger}
+\index{debugger!the Raku debugger}
 \index{debugger!launching the}
 \index{debugging!using a debugger}
-\index{debugging!the Perl 6 debugger}
-Rakudo-Perl~6 ships with an interactive debugger that 
-you call with the {\tt perl6-debug} command (or, on 
-some installs at least, {\tt perl6-debug-m}). You can 
+\index{debugging!the Raku debugger}
+Rakudo ships with an interactive debugger that 
+you call with the {\tt raku-debug} command (or, on 
+some installs at least, {\tt raku-debug-m}). You can 
 just fire this command, followed by the name of the program 
-to be debugged, just as you would normally use {\tt perl6} with 
+to be debugged, just as you would normally use {\tt raku} with 
 the name of a program to run the program. One word of 
 warning: you can run the debugger on a program only if 
 the program compiles with no errors; a debugger is not 
@@ -2167,8 +2167,8 @@ Once you've launched the debugger, you will see something
 like this:
 
 \begin{verbatim}
->>> LOADING while_done.pl6
-+ while_done.pl6 (1 - 3)
+>>> LOADING while_done.raku
++ while_done.raku (1 - 3)
 | while True {
 |     my $line = prompt "Enter something ('done' for exiting)\n";
 |     last if $line eq "done";
@@ -2176,7 +2176,7 @@ like this:
 \end{verbatim}
 
 \index{prompt}
-This says that it is loading the \verb'while_done.pl6' program, 
+This says that it is loading the \verb'while_done.raku' program, 
 and displays the first lines of the program; the last line at 
 the bottom (``\verb">"'') is a prompt where you can enter some 
 commands. The program 
@@ -2271,7 +2271,7 @@ using the following syntax: {\tt bp add file:line}, where
 
 \subsubsection{You're all set to start using the debugger}
 
-You probably know enough by now to make good use of the Perl~6 
+You probably know enough by now to make good use of the Raku 
 debugger, step through your program and find out where it 
 does something that isn't what you intended. It wasn't so 
 much to learn, was it? Try it!
@@ -2299,7 +2299,7 @@ string was progressively populated letter by letter:
 
 \begin{verbatim}
 > tp show
->>> rotate.pl6:23
+>>> rotate.raku:23
 *
 * Z
 * ZA
@@ -2350,7 +2350,7 @@ Windows, just type the following command at the prompt:
 \index{one-liner mode}
 
 \begin{verbatim}
-C:\Users\Laurent>perl6-debug-m -e "'foobar' ~~ /f.+b/;"
+C:\Users\Laurent>raku-debug-m -e "'foobar' ~~ /f.+b/;"
 \end{verbatim}
 
 As usual, change double quotes to single quotes and the other 
