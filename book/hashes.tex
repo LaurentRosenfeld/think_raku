@@ -3,7 +3,7 @@
 \label{hashes}
 
 This chapter presents another built-in type called a hash. 
-Hashes are one of Perl's best and most commonly used 
+Hashes are one of Raku's best and most commonly used 
 features; they are the building blocks of many efficient 
 and elegant algorithms.
 
@@ -37,7 +37,7 @@ from keys to values, so you can also say that each key
 maps from English to Spanish words, so the keys and the 
 values are all strings.
 
-In Perl, hash names start with the ``\verb"%"'' sigil. To create 
+In Raku, hash names start with the ``\verb"%"'' sigil. To create 
 a new hash, you just declare it this way:
 \index{sigil}
 \index{sigil, percent}
@@ -111,7 +111,7 @@ one => uno, three => tres, two => dos
 %
 
 You might also use a more concise list syntax for the hash 
-assignment and Perl will happily convert the list into a 
+assignment and Raku will happily convert the list into a 
 hash, provided the number of items in the input list is even:
 
 \begin{verbatim}
@@ -203,7 +203,7 @@ Since {\tt grep} defaults to a smart match, this can be
 made even more concise:
 
 \begin{verbatim}
-say "Found it!" if grep {'uno'}, %eng2sp.values;  # -> Found it!
+say "Found it!" if grep 'uno', %eng2sp.values;  # -> Found it!
 \end{verbatim}
 
 When looking for values, the program has to search the 
@@ -213,7 +213,7 @@ time gets longer in direct proportion.
 \index{sequential search}
 \index{search!sequential}
 
-By contrast, when looking for keys, Perl uses a {\bf hashing} 
+By contrast, when looking for keys, Raku uses a {\bf hashing} 
 algorithm that has a remarkable property: it takes about 
 the same amount of time no matter how many items are in 
 the hash. In other words, it performs really fast, compared 
@@ -226,8 +226,8 @@ faster than the bisection search solution
 
 \label{ex_employees}
 As an exercise, use the sample employee data of the 
-multidimensional array of Section~\ref{multidimensional array} 
-(p.~\pageref{multidimensional array}), load it into a hash, and 
+multidimensional array of Section~\ref{multidimensional_array} 
+(p.~\pageref{multidimensional_array}), load it into a hash, and 
 look up some salaries. Hint: you don't need a 
 multidimensional structure for doing that with a hash.
 Solution: \ref{sol_ex_employees}
@@ -415,7 +415,7 @@ term for a collection of counters (or frequencies).
 The first line of the
 function creates an empty hash.  The {\tt for} loop traverses
 the string.  Each time through the loop, if the character \verb'$letter' is
-not in the hash, Perl creates a new item with key 
+not in the hash, Raku creates a new item with key 
 \verb'$letter' and defaults the values to 0 when the ``++'' 
 operator is called on it, so that the first value immediately 
 thereafter is 1.  If \verb'$letter'  is already in the hash,
@@ -683,7 +683,7 @@ but that's not meant to say that it is better. It is
 perfectly fine if you prefer the second or the first version, 
 maybe because you find it clearer. Use whichever version you 
 like better, or your own modified version provided it does 
-the expected work. This is Perl, \emph{there 
+the expected work. This is Raku, \emph{there 
 is more than one way to do it} (TIMTOWTDI).
 \index{TIMTOWTDI}
 
@@ -691,7 +691,7 @@ Note however that the pure hash version doesn't keep the order
 in which the numbers were generated, so (pseudo)randomness 
 might not be as good.
 
-Also note, by the way, that Perl has a {\tt pick} function or 
+Also note, by the way, that Raku has a {\tt pick} function or 
 method to choose elements at random from a list without 
 repetition.
 \index{pick function or method}
@@ -830,8 +830,8 @@ dumper'') function used here gives more detailed information.
 can be quite useful while debugging a program to display a 
 detailed description of a complex data structure 
 \footnote{To tell the full truth, {\tt dd} is not standard 
-Perl~6, it is a Rakudo-specific debugging feature. A future 
-implementation of Perl~6 not based on Rakudo might not have 
+Raku, it is a Rakudo-specific debugging feature. A future 
+implementation of Raku not based on Rakudo might not have 
 it.}.
 \index{say function or method}
 \index{dd function}
@@ -872,7 +872,7 @@ my %h;
 say %h;  # -> a => 5, b => (Any), c => (Any)
 \end{verbatim}
 
-Here, Perl interpreted the \verb'%h{@a} = 5;' assignment 
+Here, Raku interpreted the \verb'%h{@a} = 5;' assignment 
 as a a slice assignment, i.e., assumed that we were 
 trying to populate three items in one go, one for each 
 element of the array.
@@ -893,7 +893,7 @@ key-value pairs.
 
 This system works fine if the keys are immutable.  But if the
 keys are mutable, like with arrays, bad things would happen. For example,
-when you create a key-value pair, Perl would hash the key and 
+when you create a key-value pair, Raku would hash the key and 
 store it in the corresponding location.  If you modify the
 key and then hash it again, it would go to a different location.
 In that case, you might have two entries for the same key,
@@ -901,7 +901,7 @@ or you might not be able to find a key.  Either way, the
 hash wouldn't work correctly.
 
 That's why keys have to be hashable, and why mutable types like
-arrays aren't. So Perl will do something else that can be 
+arrays aren't. So Raku will do something else that can be 
 useful (such as creating three distinct hash items in the 
 example above), but will not hash the array itself.
 
