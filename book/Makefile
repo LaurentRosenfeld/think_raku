@@ -1,6 +1,6 @@
 ### Input and output files/dir
-FILENAME = thinkperl6
-OUTPUT_NAME = thinkperl6
+FILENAME = think_raku
+OUTPUT_NAME = think_raku
 PDF_OUTPUT = pdflatex
 DIR_NAME = tmpDir
 
