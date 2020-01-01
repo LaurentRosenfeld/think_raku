@@ -2,11 +2,10 @@
 \chapter{Preface}
 
 Welcome to the art of computer programming and to the 
-new Perl~6 language. This will probably be 
-the first published book using Perl~6 (or one of the first),
+new Raku language. This is one of the first books using Raku,
 a powerful, expressive, malleable and highly extensible 
 programming language. But this book is less 
-about Perl~6, and more about learning 
+about Raku, and more about learning 
 how to write programs for computers. 
 
 This book is intended for beginners and does not require 
@@ -16,16 +15,16 @@ benefit from reading it.
 
 \section*{The Aim of this Book}
 
-This aim of this book is not primarily to teach Perl~6, 
+This aim of this book is not primarily to teach Raku, 
 but instead to teach the art 
-of programming, using the Perl~6 language. After having 
+of programming, using the Raku language. After having 
 completed this book, you should hopefully be able 
 to write programs to solve relatively difficult problems in 
-Perl~6, but my main aim is to teach computer science, software 
+Raku, but my main aim is to teach computer science, software 
 programming, and problem solving rather than solely to teach 
-the Perl~6 language itself. 
+the Raku language itself. 
 
-This means that I will not cover every aspect of Perl~6, but 
+This means that I will not cover every aspect of Raku, but 
 only a (relatively large, but yet incomplete) subset of it. 
 By no means is this book intended to be a reference on the 
 language.
@@ -52,15 +51,28 @@ likely to learn a lot from this process.
 
 \section*{The History of this Book}
 
-In the course of the last three to four years, I  
-have translated or adapted to French a number of tutorials 
-and articles on Perl 6, and I've also written a few entirely 
+There is a simple thing that you need to know in order to 
+understand the coming paragraphs. The Raku programming language 
+has not always been called Raku. The project started under the 
+Perl~6 name, because it was originally thought to be a new version 
+of Perl, a successor to Perl~5. With time, however, the language 
+has grown to be syntactically quite different from Perl, although 
+keeping the spirit of Perl and carrying forward the ideals of 
+the Perl Community. Because of these differences, it was decided 
+in October 2019 to rename the Perl~6 language into Raku. The book 
+that you are reading was originally called \emph{Think Perl~6}. 
+This new edition thus reflects the re-branding of the language.
+
+In the course of the three to four years before the beginning of 2016, I  
+had translated or adapted to French a number of tutorials 
+and articles on what was still called at the time Perl~6, and 
+I'd also written a few entirely 
 new ones in French.~\footnote{See for example 
 \url{http://perl.developpez.com/cours/\#TutorielsPerl6}.} 
 Together, these documents represented by the end of 2015 
 somewhere between 250 and 300 pages of material on Perl~6. 
 By that time, I had 
-probably made public more material on Perl~6 in French than 
+probably made public more material on this new language in French than 
 all other authors taken together.
 
 In late 2015, I began to feel that a Perl~6 document for beginners 
@@ -78,9 +90,9 @@ Then, something happened that changed my plans.
 
 In December 2015, friends of mine were contemplating translating 
 into French Allen B. Downey's \emph{Think Python, Second Edition}\footnote{See \url{http://greenteapress.com/wp/think-python-2e/}.}. 
-I had read an earlier edition of that book and fully supported 
+I had read an earlier edition of that excellent book and fully supported 
 the idea of translating it\footnote{I know, it's 
-about Python, not Perl. But I don't believe in engaging 
+about Python, not Perl or Raku. But I don't believe in engaging 
 in ``language wars'' and think that we all have to learn from 
 other languages; to me, Perl's motto, ``there is more than 
 one way to do it,'' also means that doing it in Python (or some 
@@ -98,26 +110,31 @@ warmly welcomed the idea. This is how I started to write this
 book late January 2016, just after having completed the 
 work on the French translation of his Python book.
 
+I had to use the ``Perl~6'' name in the preceding paragraphs, since 
+it is the way it was named at that point in history. From now on, 
+I'll use the new name of the language, \emph{Raku}, unless referring 
+to events prior to the renaming.
+
 This book is thus largely derived on Allen's \emph{Think Python}, 
-but adapted to Perl~6. As it happened, it is also much more 
-than just a ``Perl~6 translation'' of Allen's book: with 
+but adapted to Raku. As it happened, it is also much more 
+than just a ``Raku translation'' of Allen's book: with 
 quite a lot of new material, it has become a brand new book, 
 largely indebted to Allen's book, but yet a new book for which 
 I take all responsibility. Any errors are mine, 
 not Allen's.
 
-My hope is that this will be useful to the Perl~6 community, and 
+My hope is that this will be useful to the Raku community, and 
 more broadly to the open source and general 
 computer programming communities. In an interview with 
-\emph{LinuxVoice} (July 2015), Larry Wall, the creator of Perl~6, 
-said: ``We do think that Perl 6 will be learnable as a first language.''
+\emph{LinuxVoice} (July 2015), Larry Wall, the creator of Raku, 
+said: ``We do think that Perl~6 will be learnable as a first language.''
 Hopefully this book will contribute to making this happen. 
 
 \section*{Acknowledgments}
 
 I just don't know how I could thank Larry Wall to the level of 
 gratitude that he deserves for having created Perl in the first 
-place, and Perl~6 more recently. Be blessed for eternity, Larry, 
+place, and Raku more recently. Be blessed for eternity, Larry, 
 for all of that. 
 
 And thank to you all of you who took part to this 
@@ -128,12 +145,12 @@ Dave, Rafael, Chris, Stevan, Saraty, Malcolm, Graham, Leon,
 Ricardo, Gurusamy, Scott and too many others to name.  
 
 All my thanks also to those who believed in 
-this Perl~6 project and made it happen, including those who 
+this Perl~6 and then Raku project and made it happen, including those who 
 quit at one point or another but contributed for some 
 time; I know that this wasn't always easy.
 
 Many thanks to Allen Downey, who very kindly supported my idea of 
-adapting his book to Perl~6 and helped me in many respects, but 
+adapting his book to this language and helped me in many respects, but 
 also refrained from interfering in what I was putting into 
 this new book.
 
@@ -146,8 +163,8 @@ thanks also to Charles Roumeliotis, the copy editor, and
 Kristen Brown, the production editor, who fixed many 
 typographical problems and spelling mistakes.
 
-Thanks a lot in advance to readers who will offer comments 
-or submit suggestions or corrections, as well as encouragements.
+Thanks a lot to readers who have offered comments 
+or submitted suggestions or corrections, as well as encouragements.
 
 If you see anything that needs to be corrected or that 
 could be improved, please kindly send your comments to 
@@ -179,7 +196,8 @@ submitted an erratum on the O'Reilly web site. Mikhail Korenev
 suggested accurate corrections to three code samples.  
 Sébastien Dorey, Jean Forget, and Roland Schmitz sent some e-mails 
 suggesting a few useful corrections or improvements.
-Luis F. Uceta corrected quite a few typos on the Github repository. 
+Luis F. Uceta translated this book into Spanish and found in the 
+process quite a few typos he corrected on the Github repository. 
 Gil Magno, zoffixznet and Joaquin Ferrero also suggested some 
 corrections on Github.  
 
