@@ -15,7 +15,7 @@ But first we want to say a little more about variable assignment.
 \index{equality operator}
 
 Before going further, I want to address a common source of confusion.
-Because Perl uses the equals sign ({\tt =}) for assignment, it is
+Because Raku uses the equals sign ({\tt =}) for assignment, it is
 tempting to interpret a statement like {\tt \$a = \$b} as a
 mathematical proposition of equality, that is, the claim that 
 {\tt \$a} and {\tt \$b} are equal.  But this interpretation is 
@@ -23,12 +23,12 @@ wrong.
 \index{equality and assignment}
 
 First, equality is a symmetric relationship and assignment is not.  For
-example, in mathematics, if $a=7$ then $7=a$.  But in Perl, the
+example, in mathematics, if $a=7$ then $7=a$.  But in Raku, the
 statement {\tt \$a = 7} is legal and {\tt 7 = \$a} is not.
 
 Also, in mathematics, a proposition of equality is either true or
 false for all time.  If $a=b$ now, then $a$ will always equal $b$.
-In Perl, an assignment statement can make two variables equal, but
+In Raku, an assignment statement can make two variables equal, but
 they don't have to stay that way:
 
 \begin{verbatim}
@@ -106,7 +106,7 @@ This means ``get the current value of {\tt \$x}, add one, and then
 update {\tt \$x} with the new value.''
 
 If you try to update a variable that has not been given a value, 
-you get a warning, because Perl evaluates the right side 
+you get a warning, because Raku evaluates the right side 
 of the assignment statement before it assigns a value to {\tt \$x}:
 
 \begin{verbatim}
@@ -131,7 +131,7 @@ subtracting 1 is called a {\bf decrement}.
 \index{decrement operator}
 
 As mentioned earlier in Section~\ref{expr_and_statements}, 
-Perl has some shortcuts for increment and decrement :
+Raku has some shortcuts for increment and decrement :
 
 \begin{verbatim}
 $x += 1; # equivalent to $x = $x + 1
@@ -156,7 +156,7 @@ We have already seen two functions, {\tt countdown} and
 \verb"print-n-times", that iterate using recursion 
 (see Section~\ref{recursion}).  Because 
 iteration is so common, most programming languages including 
-Perl provide language features to make it easier.
+Raku provide language features to make it easier.
 One is the {\tt for} statement we saw in Section~\ref{for_loops}.
 We'll get back to that later.
 
@@ -309,7 +309,7 @@ too early at that point to really explain what this means.
 Declaring a variable with {\tt my} gives it \emph{lexical 
 scope}. This means it only exists within the current block. 
 Loosely speaking, a 
-block is a piece of Perl code within curly brackets or 
+block is a piece of Raku code within curly brackets or 
 braces. For example, the body of a subroutine and the code of a 
 {\tt while} or {\tt for} loop or of an {\tt if} conditional
 statement are code blocks. Any variable created with the 
@@ -434,7 +434,7 @@ same name and different scopes, at least until you really understand
 these concepts well enough to know what you are doing, as this 
 can be quite tricky.
 
-By far, most variables used in Perl are lexical variables, 
+By far, most variables used in Raku are lexical variables, 
 declared with the {\tt my} declarator. Although they are 
 not declared with {\tt my}, parameters declared 
 in the signature of subroutines and parameters of pointy 
@@ -503,7 +503,7 @@ the loop.  Otherwise, the program echoes whatever the user types
 and goes back to the top of the loop.  Here's a sample run:
 
 \begin{verbatim}
-$ perl6 while_done.raku
+$ raku while_done.raku
 Enter something ('done' for exiting)
 Not done
 Not done
@@ -523,7 +523,7 @@ is a quite natural way of writing an infinite loop, i.e., a
 loop that will run forever until something else in the code 
 (such as the {\tt last} statement used above) forces the 
 program to break out of the loop. This is commonly used in 
-many programming languages, and this works well in Perl. There 
+many programming languages, and this works well in Raku. There 
 is, however, another common and more idiomatic way of constructing 
 infinite loops in Raku: using the {\tt loop} statement, 
 which we will study in Section~\ref{C-style loop} 
@@ -694,7 +694,7 @@ have this problem with Raku, because, as we have already
 mentioned, it is using a better representation of rational 
 numbers than most generalist programming languages. (You 
 may want to keep this in mind if you are using some other
-languages.) Even if we don't have this problem with Perl, there 
+languages.) Even if we don't have this problem with Raku, there 
 may also be some problems with algorithms that do not behave 
 as well as Newton's algorithm. For example, some algorithms 
 might not converge as fast and as neatly as Newton's algorithm but might instead produce alternate values above and below the accurate result.
@@ -864,7 +864,7 @@ a  mysqrt(a)        sqrt(a)          diff
 The first column is a number, $a$, the second column is the 
 square root of $a$ computed with \verb"my-sqrt", the third 
 column is the square root computed by the {\tt sqrt} built-in 
-function of Perl, and the fourth column is the absolute value of 
+function of Raku, and the fourth column is the absolute value of 
 the difference between the two estimates. Don't worry too much about 
 obtaining a clean tabular formatting, we haven't 
 seen the built-in functions to do that. 
@@ -894,7 +894,7 @@ Write a function called \verb"estimate-pi" that uses this
 formula to compute and return an estimate of $\pi$.  It 
 should use a {\tt while} loop to compute terms of the 
 summation until the last term is smaller than {\tt 1e-15} 
-(which is Perl notation for $10^{-15}$). You can check
+(which is Raku notation for $10^{-15}$). You can check
 the result by comparing it to the built-in constant {\tt pi}.
 Solution: \ref{sol_pi_estimate}.
 
