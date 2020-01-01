@@ -422,7 +422,7 @@ it was called. This is how \emph{lexical} variables work.
 This behavior is the basis for building \emph{closures}, a  
 form of subroutine with some special properties that we 
 will study later in this book, but 
-is in fact implicitly present everywhere in Perl~6.
+is in fact implicitly present everywhere in Raku.
 \index{closure}
 \index{variable!lexical}
 \index{lexical variable}
@@ -503,7 +503,7 @@ the loop.  Otherwise, the program echoes whatever the user types
 and goes back to the top of the loop.  Here's a sample run:
 
 \begin{verbatim}
-$ perl6 while_done.pl6
+$ perl6 while_done.raku
 Enter something ('done' for exiting)
 Not done
 Not done
@@ -525,7 +525,7 @@ loop that will run forever until something else in the code
 program to break out of the loop. This is commonly used in 
 many programming languages, and this works well in Perl. There 
 is, however, another common and more idiomatic way of constructing 
-infinite loops in Perl~6: using the {\tt loop} statement, 
+infinite loops in Raku: using the {\tt loop} statement, 
 which we will study in Section~\ref{C-style loop} 
 (p.~\pageref{C-style loop}). For now, we'll use the {\tt while True} 
 statement, which is fairly legitimate.
@@ -690,7 +690,7 @@ For most values of {\tt \$a} this works fine, but there are a
 couple of caveats with this approach. First, in most programming 
 languages, it is dangerous to test {\tt float} equality, because 
 floating-point values are only approximately right. We do not 
-have this problem with Perl~6, because, as we have already 
+have this problem with Raku, because, as we have already 
 mentioned, it is using a better representation of rational 
 numbers than most generalist programming languages. (You 
 may want to keep this in mind if you are using some other
