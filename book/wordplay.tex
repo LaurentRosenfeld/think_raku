@@ -35,7 +35,7 @@ characters consist of either one (Linux, Mac) or two (Windows)
 physical characters (bytes). 
 \index{newline character}
 
-The Perl built-in function {\tt open} takes the path and 
+The Raku built-in function {\tt open} takes the path and 
 name of the file as a parameter and returns a {\bf file 
 handle} ({\tt IO::Handle object}) which you can use to read 
 the file (or to write to it):
@@ -65,7 +65,7 @@ in most languages.
 \index{read mode}
 \index{file mode!read}
 
-However, Perl's {\tt IO} role (in simple terms, a role is 
+However, Raku's {\tt IO} role (in simple terms, a role is 
 a collection of related methods) offers simpler methods which 
 can open a file and read it all in one single instruction (i.e., 
 without having to first open a file handle and then close it):
@@ -175,14 +175,14 @@ list of 113,809 official crosswords; that is, words that are
 considered valid in crossword puzzles and other word games.  
 In the Moby collection, the filename is \emph{113809of.fic}; 
 you can download a copy, with the simpler name \emph{words.txt}, 
-from \url{https://github.com/LaurentRosenfeld/thinkperl6/tree/master/Supplementary/words.txt}.
+from \url{https://github.com/LaurentRosenfeld/think_raku/tree/master/Supplementary/words.txt}.
 \index{Moby Project}
 \index{crosswords}
 \index{word list}
 
 This file is in plain text (with each word of the list on 
 its own line), so you can open it with a text
-editor, but you can also read it from Perl. Let's do so 
+editor, but you can also read it from Raku. Let's do so 
 in the interactive mode (with the REPL):
 \index{interactive mode}
 \index{REPL}
@@ -374,12 +374,12 @@ your operating system prompt:
 \index{one-liner mode}
 
 \begin{verbatim}
-$ perl6 -n -e '$_.say if $_.chars > 20;' words.txt
+$ raku -n -e '$_.say if $_.chars > 20;' words.txt
 \end{verbatim} 
 %
-The ``-e'' option tells Perl that the script to be run 
+The ``-e'' option tells Raku that the script to be run 
 comes next on the command line between quotation marks. The 
-``-n'' asks Perl to read line by line the file after the 
+``-n'' asks Raku to read line by line the file after the 
 end of the command line, to store each line in the \verb'$_' 
 topical variable, and to apply the content of the script to 
 each line. And the one-liner script is just printing the 
@@ -387,7 +387,7 @@ content of \verb'$_' if its length is greater than 20.
 \index{topical variable}
 
 To simplify a bit, the two options \verb'-n' and \verb'-e' 
-may be grouped together as \verb"perl6 -ne". In addition, 
+may be grouped together as \verb"raku -ne". In addition, 
 the \verb'$_' topical variable can be omitted in method calls 
 (in other words, if a method has no invocant, the invocant 
 will be defaulted to \verb'$_'). Finally, the trailing 
@@ -396,7 +396,7 @@ thus be made somewhat simpler and shorter:
 \index{invocant}
 
 \begin{verbatim}
-$ perl6 -ne '.say if .chars > 20' words.txt
+$ raku -ne '.say if .chars > 20' words.txt
 \end{verbatim} 
 %
 Remember that, if you're trying this under Windows, you need to 
@@ -404,7 +404,7 @@ replace the single quotes with double quotes (and vice-versa if
 the scripts itself contains double quotes):
 
 \begin{verbatim}
-C:\Users\Laurent>perl6 -ne ".say if .chars > 20" words.txt
+C:\Users\Laurent>raku -ne ".say if .chars > 20" words.txt
 \end{verbatim} 
 %
 
@@ -871,7 +871,7 @@ happened 8 times over all. So the question is, how old am I now?
 
 \end{quote}
 
-Write a Perl program that searches for solutions to this Puzzler.
+Write a Raku program that searches for solutions to this Puzzler.
 Hint: you might find the string formatting method 
 {\tt sprintf} useful.
 \index{sprintf function}
