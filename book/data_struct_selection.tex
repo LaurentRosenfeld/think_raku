@@ -193,6 +193,104 @@ clause.
 
 Solution: \ref{sol_proceed_ex}
 
+\section{Multiple Conditionals with Junctions}
+\label{junction}
+\index{junction}
+
+Sometimes, you need to test several possible conditions 
+and would write something like this:
+
+\begin{verbatim}
+if $value == 3 or $value == 5 or $value == 7 { #...
+\end{verbatim}
+
+This is quite verbose, and I don't like to have to 
+repeat the \verb'$value ==' part several times. I 
+would prefer to be able to write something like: 
+``If value is 3 or 5 or 7.'' That syntax doesn't work, 
+but junctions enable you to do almost that:
+
+\begin{verbatim}
+if $value == 3|5|7 {
+	say "$value is either 3, or 5, or 7"
+}
+\end{verbatim}
+
+The \verb'3|5|7' part is a junction.
+
+Junctions are superpositions of unordered values. 
+Operations on junctions are executed for each item 
+of the junction separately (and maybe even in parallel), 
+and the results are assembled in a junction of the same 
+type.
+
+The junction types differ when evaluated in boolean context. 
+The types and associated junction constructors are 
+\verb'any', \verb'all', \verb'one' and \verb'none'.
+\index{any junction}
+\index{all junction}
+\index{none junction}
+\index{one junction}
+
+\begin{verbatim}
+Type  Constructor  Infix    True if ...
+                  Operator
+any   any            |      at least one value evaluates to True
+all   all            &      no value evaluates to False
+one   one            ^      exactly one value evaluates to True
+none  none                  no value evaluates to True
+
+\end{verbatim}
+
+\index{junction types}
+
+For example, \verb'3|5|7' is the same as \verb'any(3, 5, 7)'.
+
+This is another example of an \verb'any' junction:
+
+\begin{verbatim}
+my Junction $weekday = any <Monday Tuesday Wednesday 
+                            Thursday Friday>
+if $day eq $weekday {
+    say "This is a weekday";
+}
+\end{verbatim}
+
+In this example the \verb'eq' operator is called with each 
+pair \verb'$day', 'Monday', \verb'$day', 'Tuesday', etc. 
+and the result is put into an any-junction again. As 
+soon as the result is determined (in this case, as soon 
+as one comparison returns True), it can abort the 
+execution of the other comparisons.
+
+This works not only for operators, but also for routines:
+
+\begin{verbatim}
+if 2 == sqrt(4 | 9 | 16) {
+    say "YaY";
+}
+\end{verbatim}
+
+Junctions can be very handy to perform fairly common tasks. 
+Imagine you have an array of numbers, and you want to 
+check that all of them are non-negative. In most 
+programming languages, you would write a loop to 
+iterate over the array and check each item in turn. 
+In Raku, this is very simple:
+
+\begin{verbatim}
+my @values = get-values();
+if all(@values) >= 0 { ... }
+\end{verbatim}
+
+Or, if you want to avoid a division by zero exception:
+
+\begin{verbatim}
+my @values = get-values();
+perform-division(@values) if none(@values) == 0;
+\end{verbatim}
+\index{junction}
+
 \section{Subroutine Named and Optional Parameters}
 
 The subroutines that we have seen so far used \emph{positional} 
