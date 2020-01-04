@@ -232,15 +232,17 @@ The types and associated junction constructors are
 \index{none junction}
 \index{one junction}
 
-\begin{verbatim}
-Type  Constructor  Infix    True if ...
-                  Operator
-any   any            |      at least one value evaluates to True
-all   all            &      no value evaluates to False
-one   one            ^      exactly one value evaluates to True
-none  none                  no value evaluates to True
-
-\end{verbatim}
+\begin{table}[htb]%
+\centering%
+\begin{tabular}{llcl}
+\toprule%
+\textbf{Type} & \textbf{Constructor} & \textbf{Infix Operator}  & \textbf{True if...}                               \\\midrule
+any           & any                  & \verb'|'                  & at least one value evaluates to \verb|True|      \\
+all           & all                  & \verb'&'                  & no value evaluates to False \verb|False|         \\
+one           & one                  & \verb'^'                  & exactly one value evaluates to True \verb|True|  \\
+none          & none                 &                           & no value evaluates to \verb|True|                \\\bottomrule
+\end{tabular}
+\end{table}
 
 \index{junction types}
 
