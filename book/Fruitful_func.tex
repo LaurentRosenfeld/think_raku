@@ -882,8 +882,12 @@ a different \emph{arity} (a fancy word for the number of
 arguments) or different argument types, using the 
 {\tt multi} keyword. In this case, the interpreter will 
 pick the version of the subroutine whose signature 
-matches (or best matches) the argument list.
+matches (or best matches) the argument list. This process 
+is called \emph{dispatch}. Dispatch happens depending on 
+the number (arity), type and name of arguments.
 \index{arity}
+\index{dispatch (multi subroutines)}
+\index{multi!dispatch}
 
 For example, we could rewrite the factorial function 
 as follows:
@@ -916,8 +920,45 @@ multi fibonacci(Int $n where $n > 1) {
 say fibonacci 10;  # -> 89
 \end{verbatim}
 
+Note that in the {\tt fibonacci} example just above, we have 
+omitted the {\tt sub} keyword, since it isn't necessary after 
+the {\tt multi} declarator.
+
 Many built-in functions and most operators of Raku are 
 written as multi subroutines.
+
+In the two examples above, only one of the {\tt multi} 
+subroutine signature could match the input parameters. 
+For example, if the argument passed to the {\tt fact} 
+subroutine is 0, then the first version is called; 
+if the argument is greater than 0, then the second version 
+is called.
+
+What if more that one signature matches the passed 
+arguments? Then, the dispatch process becomes a little 
+bit more complicated. As said at the beginning of this section, 
+the runtime environment will select the \emph{candidate} 
+subroutine that \emph{best} matches the signature. 
+In such cases, the run time environment first looks 
+at the arity (number of arguments) of the signature. 
+If only one signature matches the number of parameters 
+passed to the subroutine, then it is this candidate subroutine 
+that is selected. If, on the other hand, several signatures 
+match the number of arguments, then the type of the arguments 
+drives the dispatch. \footnote{We will see later 
+(see section \ref{named_parameters}) that there can 
+be other types of signatures, with \emph{named parameters}. 
+Let's just say here that, when there are named arguments, 
+they drive the dispatch even when their type is the same as 
+another candidate. \index{named parameter}
+}  
+\index{arity}
+\index{dispatch (multi subroutines)}
+\index{multi!dispatch}
+\index{candidate (multi subroutines)}
+\index{multi!subroutine}
+
+
 
 \section{Debugging}
 \label{factdebug}
