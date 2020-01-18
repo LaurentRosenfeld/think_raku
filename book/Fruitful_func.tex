@@ -217,8 +217,8 @@ temporary variables and prints them:
 sub distance($x1, $y1, $x2, $y2) {
     my $dx = $x2 - $x1;
     my $dy = $y2 - $y1;
-    say '$dx is', $dx;
-    say '$dy is', $dy;
+    say '$dx is ', $dx;
+    say '$dy is ', $dy;
     return 0.0;
 }
 \end{verbatim}
@@ -650,13 +650,13 @@ this sequence of function calls.
 \end{figure}
 
 The return values are shown being passed back up the stack.  In each
-frame, the return value is the value of {\tt result}, which is the
-product of {\tt n} and {\tt recurse}.
+frame, the return value is the value of {\tt \$result}, which is the
+product of {\tt \$n} and {\tt \$recurse}.
 \index{function!frame}
 \index{frame}
 
 In the last frame, the local
-variables {\tt recurse} and {\tt result} do not exist, because
+variables {\tt \$recurse} and {\tt \$result} do not exist, because
 the branch that creates them does not run.
 
 A seasoned Raku programmer might write a more concise or

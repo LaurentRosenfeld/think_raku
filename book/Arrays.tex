@@ -51,7 +51,7 @@ to enumerate its values, separated by commas:
 (3 4 5)
 > say (3, 4, 5).WHAT;
 (List)
-say $_ for 1, 2, 3;
+> say $_ for 1, 2, 3;
 1
 2
 3
@@ -747,7 +747,7 @@ would not work with lists, which are immutable. You would
 get an error with a list:
 
 \begin{verbatim}
-> for <red orange yellow> <-> $color { $color = tc $color}
+> for <red orange yellow> <-> $color { $color = tc $color }
 Parameter '$color' expected a writable container, but got Str value...
 \end{verbatim}
 
@@ -1673,13 +1673,13 @@ alphabetical order this way:
 \index{sort!case insensitive}
 
 \begin{verbatim}
-say sort { $^a.lc cmp $^b.lc}, <a ab abc A bc BAC AC>;
+say sort { $^a.lc cmp $^b.lc }, <a ab abc A bc BAC AC>;
      # -> (a A ab abc AC BAC bc)
 \end{verbatim}
 
 or this way:
 \begin{verbatim}
-say sort { $^a.lc leg $^b.lc}, <a ab abc A bc BAC AC>;
+say sort { $^a.lc leg $^b.lc }, <a ab abc A bc BAC AC>;
      # -> (a A ab abc AC BAC bc)
 \end{verbatim}
 

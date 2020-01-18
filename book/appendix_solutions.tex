@@ -1523,7 +1523,7 @@ say count "banana", "a";   # -> 3
 The solution to Exercise~\ref{count_a} 
 (p.~\pageref{sol_count_a}) below uses the 
 {\tt index} and {\tt substr} functions to perform 
-the same count .
+the same count.
 
 
 \subsection{Section~\ref{regex_loop}: Simulating a Regex with a Loop (p.~\pageref{regex_loop})}
@@ -1673,7 +1673,7 @@ say ~$0 if $string ~~ /(\d ** 10)/; # -> 0123456789
 \end{verbatim}
 
 We are simply using the \verb'\d' (digit) character class 
-together with a quantifier specifying this class 10~times .
+together with a quantifier specifying this class 10~times.
 \index{character class}
 
 Note that we have used capturing parentheses here in order 
@@ -1774,7 +1774,7 @@ Here's a way to find the first word starting with the letter
 ``a'' in a sentence:
 
 \begin{verbatim}
-my $string = "Four scores and seven years ago our fathers ...";
+my $string = "Four score and seven years ago our fathers ...";
 say ~$0 if $string ~~ /\W (a \w+)/;  # -> and
 \end{verbatim}
 
@@ -3388,7 +3388,7 @@ Populating an array with either {\tt push} or
 here is to compare run times of various solutions.
 The {\tt now} function returns the number of seconds 
 elapsed since a theoretical start point called ``the 
-Epoch,'' usually January 1, 1970. Calling {\tt now} once 
+Epoch'', usually January 1, 1970. Calling {\tt now} once
 before running a script and once after will tell 
 us how long it ran through a simple subtraction.
 
