@@ -7,7 +7,7 @@ To recompile it, run the following command within the directory:
 ```
 make
 ```
-This command will create the directory `tmpDir` where you'll find the PDF (thinkperl6.pdf)
+This command will create the directory `tmpDir` where you'll find the PDF (thinkraku.pdf)
 alonside other intermediate files created during the compilation process.
 
 To move the created pdf to the directory `PDF` in the root directory, run:
@@ -24,6 +24,6 @@ complete installation of a recent TeX Live distribution.
 
 Also note that a PDF version is available (https://github.com/LaurentRosenfeld/think_raku/tree/master/PDF).
 
-There are some Perl 6 examples of this book in the https://github.com/LaurentRosenfeld/think_raku/tree/master/Supplementary directory and a quite a bit of additional material on the Raku programming language (conference talks, blog posts, etc.) in the 
+There are some Raku examples of this book in the https://github.com/LaurentRosenfeld/think_raku/tree/master/Supplementary directory and a quite a bit of additional material on the Raku programming language (conference talks, blog posts, etc.) in the 
 https://github.com/LaurentRosenfeld/Perl-6-Miscellaneous directory.
 
