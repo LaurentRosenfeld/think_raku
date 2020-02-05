@@ -4,7 +4,7 @@
 \index{class}
 
 
-At this point you know how to use functions to organize code and 
+At this point you know how to use functions to organize code and to use
 built-in types to organize data.  The next step is to learn
 ``object-oriented programming,'' which uses programmer-defined types
 to organize both code and data.
@@ -101,25 +101,25 @@ some classes and to use them to create objects.
 \index{method}
 \index{dot notation}
 You already know informally what a method is, as we have 
-used built-in methods throughout the book. It is a sort of 
+used built-in methods throughout the book. A method is a sort of 
 function with a special postfix syntax using the dot notation 
-on the invocant. For example, you may invoke the {\tt say} 
-method on a simple string:
+on some other thing, called the invocant. For example, you may invoke the {\tt say} 
+method on a simple quoted string using this syntax:
 
 \begin{verbatim}
 "foo".say;           # -> foo
 \end{verbatim}
 
-Note that ``foo'' isn't an object, but a simple string, but 
+Note that ``foo'' isn't an object, it is only a simple string, but 
 you can invoke the \verb'say' method on it, because Raku 
-can treat it internally as an object when needed. In some 
-OOP languages, this implicit conversion of a native type 
+can treat it internally as if it were an object when Raku needs to do so. In some 
+OOP languages, this conversion of a native thing or type automatically (implicitly)
 into an object is sometimes called autoboxing.
 \index{autoboxing}
 
-You probably also remember that methods can be chained in a 
-process where the value returned by a method becomes the 
-invocant for the next method:
+You probably also remember that methods can be chained together using the postfix dot notation in a 
+special syntactic process where the value returned by one method then becomes the thing (the invocant)
+which is used as the base for the next method:
 
 \begin{verbatim}
 "foo".uc.say;        # -> FOO
@@ -130,35 +130,35 @@ my @alphabet = <charlie foxtrot alpha golf echo bravo delta>;
 \end{verbatim}
 
 \index{role}
-In OOP, methods applicable to objects are usually defined 
-within classes, often the class that also defined the 
+In OOP, the methods that can be applied to objects are usually defined together
+within classes. These methods are thought of as applicable to that class. Often this class that 
+has the methods is the one which also defined the 
 object or some other class closely related to it. In Raku, 
-methods can also be defined in a {\bf role}, which is 
-another type of code package somewhat resembling to a class, 
-as we will see later.
+methods can also be defined in a special code package which is called a {\bf role}. 
+A role is another type of code package which somewhat resembles a class, but is has different 
+characteristics, as we will see later.
 
 \index{black box}
 \index{encapsulation}
 The basic idea of object-oriented programming is that an 
 object is a kind of black box that hides its internals
 (data and code) from the user; the user can consult or change 
-the state of an object through the methods. Hiding the 
+the state of an object using the object's methods. Hiding the 
 internals of objects is called {\bf encapsulation}. This 
-often enables a higher-level view and a better data 
-abstraction than what we have seen so far; this in turns 
-helps to make programs less buggy (especially large programs).
+often creates a higher-level view and a better data 
+abstraction than what we have seen so far; this in turn, can
+help to make programs less buggy (especially large programs).
 
 In addition, OOP usually also offers the following concepts:
 \begin{itemize}
 \index{polymorphism}
 \item {\bf polymorphism}, i.e., the possibility for a function or 
-a method to do different things depending of the type of 
+a method to have many forms (morphs), and thus do different things depending of the type of 
 object which calls it;
 \index{inheritance}
-\item {\bf inheritance}, i.e., the possibility to derive a class from 
-another class, so that the child class inherits some of 
-the properties of the {\bf parent class}, which is a powerful tool 
-for code reuse.
+\item {\bf inheritance}, i.e., the possibility for a class to get information or details from 
+another class, so that the class which gets this information is like a child which inherits some of 
+the properties coming from the {\bf parent class}. Inheritance is a powerful tool for code reuse.
 \end{itemize}
 
 We will now study how all these concepts are implemented in Raku.
@@ -169,19 +169,18 @@ We will now study how all these concepts are implemented in Raku.
 \index{programmer-defined type}
 \index{type!programmer-defined}
 
-We have used many of Raku's built-in types; now we are going
+Previously, we used many of Raku's built-in types; now we are going
 to define a new type.  As an example, we will create a type
-called {\tt Point2D} that represents a point in 
-two-dimensional space.
+called {\tt Point2D} that allows a program to represent a point in a two-dimensional space.
 \index{point, mathematical}
 \index{two-dimensional space}
 
-In mathematical notation, points are often written in
-parentheses with a comma separating the coordinates. For example,
-in Cartesian or rectangular coordinates, $(0,0)$ represents 
-the origin, and $(x,y)$ represents the point $x$ units to the 
-right and $y$ units up from the origin. $x$ is called 
-the abscissa of the point, and $y$ the ordinate.
+In mathematical notation, these two dimensional points are often written using
+parentheses with a comma separating the coordinates. For example, 
+in Cartesian or rectangular coordinates, the origin of the two dimensional
+space is represented using $(0,0)$ , and $(x,y)$ represents the point $x$ units to the 
+right of the origin point, and $y$ units up from the origin. Sometimes formally, $x$ is called 
+the abscissa of a point, and $y$ the ordinate of the same point.
 \index{Cartesian coordinates}
 \index{coordinates!Cartesian}
 \index{coordinates!rectangular}
@@ -192,10 +191,10 @@ There are several ways we might represent points in Raku:
 \begin{itemize}
 
 \item We could store the coordinates separately in two
-variables, {\tt \$x} and {\tt \$y}.
+variables, such as the variable {\tt \$x} and the variable {\tt \$y}.
 
-\item We could store the coordinates as elements in a list, 
-an array, or a pair.
+\item We could store the coordinates together in a single value, perhaps 
+as elements in a list, an array, or as a pair.
 
 \item We could create a new type to represent points as
 objects.
@@ -203,12 +202,12 @@ objects.
 \end{itemize}
 \index{representation}
 
-Creating a new type is a bit more complicated than the 
+It may seem that creating a new type is a bit more complicated than the 
 other options, but it has advantages that will be apparent soon.
 
-A programmer-defined type is usually created by a {\bf class}
+A programmer-defined type is usually created using a {\bf class}
 (or a \emph{role}, but we will come back to that later). 
-A barebones class definition for a point type looks like this:
+A bare-bones class definition for such a type representing a point looks like this:
 \index{class}
 \index{object!class}
 \index{class!definition}
@@ -223,9 +222,9 @@ class Point2D {
 }
 \end{verbatim}
 %
-The header indicates that the new class is called {\tt Point2D}.
-The body is defining two attributes, i.e., named properties 
-associated with the class, here the abscissa and ordinate 
+The header for this definition indicates that this type is a new class is which is called {\tt Point2D}.
+The body for this definition has two defining attributes, i.e., named properties 
+associated with the class, here named the abscissa and ordinate 
 (or $x$ and $y$ coordinates) of the point.
 \index{Point2D class}
 \index{class!Point2D}
@@ -233,8 +232,9 @@ associated with the class, here the abscissa and ordinate
 \index{type object}
 Defining a class named {\tt Point2D} creates a {\bf type object}.
 
-The type object is like a factory for creating objects.  To create 
-a point, you call the {\tt new} method on the {\tt Point2D} class:
+Much like a manufacturing factory can create physical objects, 
+This software type object is like a factory for creating software objects.  To create 
+a point, you call the {\tt new} method on the {\tt Point2D} class using the dot notation:
 
 \begin{verbatim}
 my $point = Point2D.new( 
@@ -248,35 +248,36 @@ say $point.abscissa;            # -> 3
 %
 \index{isa method}
 \index{WHAT}
-You can of course create as many points as you wish.
+Of course, you can create as many points as you wish.
 
 \index{constructor}
 \index{new, object constructor}
 \index{dot notation}
 \index{object!constructor}
-The {\tt new} method is called a {\bf constructor} and has not 
-been defined in this example; this is not needed because 
+The {\tt new} method is called a {\bf constructor} because it is a way
+to construct or create a new object of this type. In this case, it has not 
+been defined in this example; this is not necessary because 
 Raku supplies a default {\tt new} constructor method for 
-every class (we'll see later how). The method invocation 
-syntax, with the dot notation, is the same as what we have 
-used throughout the book to invoke built-in methods. You 
-are not forced to use this constructor; you can also create 
-your own (and you may name it {\tt new} or something else), 
-but we will stay with the built-in {\tt new} method for the 
+every class (we'll see later how). Using the dot notation as the method invocation 
+syntax is the same notation we have 
+used throughout this book to invoke built-in methods. Even when Raku creates a 
+default {\\ new }} method, you are not forced to use this constructor; you can also create 
+your own (and you may name it {\tt new} or some other name you prefer), 
+but we will stay with the using the built-in {\tt new} method provided by Raku for the 
 time being.
 \index{invocation!method}
 \index{method invocation}
 
 Creating a new object with a class is called {\bf instantiation}, 
-and the object is an {\bf instance} of the class.
+and the object which is created is an {\bf instance} of the class.
 \index{instance}
 \index{object!instance}
 \index{instantiation}
 
-Every object is an instance of some class, so the terms 
+Every object must be an instance of some class, so the terms 
 ``object'' and ``instance'' are interchangeable.  But 
-we will often use ``instance'' to indicate that we are 
-talking about an object belonging to a programmer-defined type.
+we will often use the term ``instance'' to indicate that we are 
+discussing an object belonging to a programmer-defined type.
 \index{type}
 \index{programmer-defined type}
 
@@ -287,11 +288,13 @@ talking about an object belonging to a programmer-defined type.
 \index{dot notation}
 
 The attributes that we have defined are properties associated 
-with the {\tt Point2D} class, but they are specific to the 
-instance of the class that has been created. They are 
-instance attributes. If we create another {\tt Point2D} object, 
+with the {\tt Point2D} class, but they have specific values which are
+associated with the specific instance of the class that has been created. 
+They are called instance attributes. If we create another {\tt Point2D} object, 
 it will also have these attributes, but the values of 
-these attributes are likely to be different. 
+these attributes for that other object are likely to be different. \
+When we specify these specific values for an object we are said to assign
+values to that object's attributes (or propoerties).
 
 Figure~\ref{fig.point2d} shows the result of these assignments.
 A state diagram that shows an object and its attributes is
@@ -311,12 +314,14 @@ called an {\bf object diagram}.
 The variable {\tt \$point} refers to a {\tt Point2D} object, 
 which contains two attributes.  
 
-Each attribute of the {\tt Point2D} class should refer to a 
-number, but this is not obvious in the current definition of 
-the class. As it stands right now, we could create a {\tt Point2D} 
+Each attribute of the {\tt Point2D} class should be limited to refer to a 
+number, but this is limitation is not obvious in the current definition of 
+the class. As it stands right now, even though our example used a number
+such as 3 or 4 as an attribute's value, we could create a {\tt Point2D} 
 object with a string for the abscissa, which would not make 
-much sense. We can improve the class definition by specifying 
-a numeric type for the attributes:
+much sense since we are representing a point in a two-dimensional space.
+To show this limitation, we can improve this class definition by specifying 
+a numeric type for each of these attributes:
 %
 \begin{verbatim}
 class Point2D {
@@ -328,11 +333,11 @@ class Point2D {
 \index{private attribute}
 \index{attribute!private}
 The instance attributes are private to the class, which means 
-that they normally cannot be accessed from outside the class: 
-you would usually need to invoke a method of the class 
-(i.e., a kind of subroutine defined within the class), to get 
-their value. However, when an attribute is defined with a dot 
-as in \verb'$.abscissa':
+that no other object or method from outside the class can normally access their values: 
+To access them, the external object would usually need to invoke a method of this class 
+to get their value. Conceptually, this method is a kind of subroutine defined only within the class.
+However, when an attribute is defined with a dot notation
+such as  \verb'$.abscissa':
 
 \begin{verbatim}
     has $.abscissa;  
@@ -340,7 +345,7 @@ as in \verb'$.abscissa':
 %
 \index{accessor}
 \index{method!accessor}
-Raku automatically creates an implicit \emph{accessor} method, 
+Raku itself will automatically create an implicit \emph{accessor} method, 
 i.e., a method having the same name as the attribute that returns 
 the value of this attribute. Thus, when we wrote:
 
@@ -350,7 +355,7 @@ say $point.abscissa;                     # -> 3
 %
 we were not accessing directly the {\tt abscissa} attribute of 
 the \verb'$point' object, but we were really calling the 
-{\tt abscissa} method on the object, which in turn returned 
+{\tt abscissa} method which is on the object, which in turn returned 
 the value of that attribute.
 
 \index{dot notation}
