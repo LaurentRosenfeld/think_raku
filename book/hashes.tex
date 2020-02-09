@@ -23,7 +23,7 @@ they can be (almost) anything.
 
 A hash contains a collection of indices, which are called 
 {\bf keys}, and a collection of values.  Each key is associated with a single value.  A key and a value together form a pair 
-(an object of the Pair type), or a {\bf key-value pair}. A 
+(an object of the {\tt Pair} type), or a {\bf key-value pair}. A
 hash can be viewed as a collection of key-value pairs. The 
 values in a hash can also be called items or elements, as with arrays.
 \index{item}
@@ -1016,7 +1016,7 @@ statements like this:
 \begin{verbatim}
 sub run-stop  { ... };
 sub run-start { ... };
-my $param = get-param;
+my $param = get-param();
 if $param eq "stop" {
     run-stop;
 } elsif $param eq "start" {

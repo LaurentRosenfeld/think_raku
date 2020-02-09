@@ -1,6 +1,6 @@
 use v6;
 
-### Exercise 7.2 - any_lowervase - only two subroutines are correct ###
+### Exercise 7.2 - any_lowercase - only two subroutines are correct ###
 
 sub is-lower (Str $char) { 
     return so $char ~~ /^<[a..z]>$/

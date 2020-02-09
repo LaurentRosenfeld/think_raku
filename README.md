@@ -1,4 +1,4 @@
-# thinkperl6
+# Think Raku
 
 ### Generating the PDF
 
@@ -24,6 +24,6 @@ complete installation of a recent TeX Live distribution.
 
 Also note that a PDF version is available (https://github.com/LaurentRosenfeld/think_raku/tree/master/PDF).
 
-There are some Perl 6 examples of this book in the https://github.com/LaurentRosenfeld/think_raku/tree/master/Supplementary directory and a quite a bit of additional material on the Raku programming language (conference talks, blog posts, etc.) in the 
+There are some Raku code examples from this book in the https://github.com/LaurentRosenfeld/think_raku/tree/master/Supplementary directory and a quite a bit of additional material on the Raku programming language (conference talks, blog posts, etc.) in the 
 https://github.com/LaurentRosenfeld/Perl-6-Miscellaneous directory.
 

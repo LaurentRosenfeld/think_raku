@@ -319,7 +319,7 @@ my regex line { \N* \n }
 if "abc\ndef\n" ~~ / <first=line> <second=line> / {
     say "First line: ", $<first>.chomp;   # -> First line: abc
     say "Second line: ", $<second>.chomp; # -> Second line: def
-    print $_.chomp for $<line>.list;      # -> abc  def
+    print $_.chomp for $<line>.list;      # -> abcdef
 }
 \end{verbatim}
 
@@ -339,7 +339,7 @@ if "abc\ndef\n" ~~ / <first=line> <second=line> / {
 This relatively little-known token, "\verb')>'," marks 
 the endpoint of the match's overall capture. Anything 
 after it will participate to the match but will not 
-be captured by the named regex. Similarly, the "\verb'<)'" 
+be captured by the named regex. Similarly, the "\verb'<('"
 token indicates the start of the capture.
 
 Named regexes are only one form (and probably not the 
@@ -525,7 +525,7 @@ named rules, in the same way a class groups
 a number of methods. A grammar is actually a class that 
 inherits from the {\tt Grammar} superclass, which provides 
 methods such as {\tt parse} to analyze a string and 
-{\tt .parsefile} to analyze a file. Moreover, you can 
+{\tt parsefile} to analyze a file. Moreover, you can
 actually write some methods in a grammar, and even import 
 some roles. And, as we shall see, grammars are often 
 associated with some {\bf actions classes} or 
